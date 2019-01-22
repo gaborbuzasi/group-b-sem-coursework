@@ -1,2 +1,2 @@
-# b-team-sem-coursework
-B Team - Software Engineering Methods module coursework
+# Group-B-SEM-coursework
+Group B - Software Engineering Methods module coursework
