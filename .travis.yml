@@ -3,8 +3,7 @@ sudo: required
 language: java
 
 services:
-  - docker
+- docker
 
 after_success:
-  - docker build -t b_team_coursework .
-  - docker run b_team_coursework
+- docker-compose up --abort-on-container-exit
