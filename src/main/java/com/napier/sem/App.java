@@ -4,11 +4,24 @@ import java.sql.*;
 
 public class App
 {
+    /**
+     * Connection to MySQL database
+     */
+    private Connection conn = null;
+
     public static void main(String[] args)
+    {
+        App a = new App();
+
+        a.connect();
+
+        a.disconnect();
+    }
+
+    public void connect()
     {
         try
         {
-            // Load Database driver
             Class.forName("com.mysql.jdbc.Driver");
         }
         catch (ClassNotFoundException e)
@@ -17,9 +30,7 @@ public class App
             System.exit(-1);
         }
 
-        // Connection to the database
-        Connection con = null;
-        int retries = 100;
+        int retries = 10;
         for (int i = 0; i < retries; ++i)
         {
             System.out.println("Connecting to database...");
@@ -28,11 +39,8 @@ public class App
                 // Wait a bit for db to start
                 Thread.sleep(30000);
                 // Connect to database
-                con = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "example");
+                conn = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "example");
                 System.out.println("Successfully connected");
-                // Wait a bit
-                Thread.sleep(10000);
-                // Exit for loop
                 break;
             }
             catch (SQLException sqle)
@@ -45,13 +53,19 @@ public class App
                 System.out.println("Thread interrupted? Should not happen.");
             }
         }
+    }
 
-        if (con != null)
+    /**
+     * Disconnect from the MySQL database.
+     */
+    public void disconnect()
+    {
+        if (conn != null)
         {
             try
             {
                 // Close connection
-                con.close();
+                conn.close();
             }
             catch (Exception e)
             {
