@@ -10,10 +10,19 @@ public class App
     public static void main(String[] args)
     {
         List<Country> countries = Countries.getCountries();
+        System.out.println("Retrieved data with number of rows " + countries.size());
 
-        for (Country c : countries)
+        if (countries != null)
         {
-            System.out.print(c.Name);
+            for (Country c : countries)
+            {
+                System.out.println(c.Name);
+            }
         }
+        else
+        {
+            System.out.println("Anyadat legyel null");
+        }
+
     }
 }
