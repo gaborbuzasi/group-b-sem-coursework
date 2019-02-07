@@ -17,7 +17,7 @@ public class Country {
     /**
      * Continent of country
      */
-    public Continent Continent;
+    public String Continent;
 
     /**
      * Region of a country
@@ -30,7 +30,7 @@ public class Country {
     public float SurfaceArea;
 
     /**
-     * 
+     *
      */
     public int IndepYear;
     public int Population;
@@ -40,7 +40,7 @@ public class Country {
     public String LocalName;
     public String GovernmentForm;
     public String HeadOfSate;
-    public int Capital;
+    public String Capital;
     public String Code2;
 
     private enum Continent {
