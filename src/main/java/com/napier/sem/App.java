@@ -21,7 +21,7 @@ public class App
         }
         else
         {
-            System.out.println("Anyadat legyel null");
+            System.out.println("Something bad happened...");
         }
 
     }
