@@ -30,26 +30,12 @@ public class Country {
     public float SurfaceArea;
 
     /**
-     *
+     * Population of country
      */
-    public int IndepYear;
     public int Population;
-    public float LifeExpectancy;
-    public float GNP;
-    public float GNPOld;
-    public String LocalName;
-    public String GovernmentForm;
-    public String HeadOfSate;
-    public String Capital;
-    public String Code2;
 
-    private enum Continent {
-        Africa,
-        Antarctica,
-        Asia,
-        Europe,
-        NorthAmerica,
-        Oceania,
-        SouthAmerica
-    }
+    /**
+     * Capital name of country
+     */
+    public String Capital;
 }

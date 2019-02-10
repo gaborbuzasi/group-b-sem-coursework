@@ -16,7 +16,7 @@ public class App
         {
             for (Country c : countries)
             {
-                System.out.println(c.Name);
+                System.out.println("Name: "  + c.Name + " - Population: " + c.Population);
             }
         }
         else
@@ -24,5 +24,7 @@ public class App
             System.out.println("Something bad happened...");
         }
 
+
+        System.out.println("Application stops");
     }
 }
