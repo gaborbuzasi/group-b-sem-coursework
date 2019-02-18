@@ -1,0 +1,29 @@
+@startuml
+
+actor Statistics as "Statistician"
+
+
+
+rectangle Database
+
+
+
+rectangle "Population Information System" {
+
+    usecase UC7 as "Get report of the total population of the world"
+
+
+
+    usecase UC7 as "Print report of the total population of the world"
+
+
+
+    ST - UC7
+
+    UC7 ..> UCa : include
+
+    UC7 - Database
+
+}
+
+@enduml

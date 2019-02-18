@@ -1,0 +1,29 @@
+@startuml
+
+actor Statistics as "Statistician"
+
+
+
+rectangle Database
+
+
+
+rectangle "Population Information System" {
+
+    usecase UC11 as "Get  report of All the cities in a region organised by largest population to smalles "
+
+
+
+    usecase UC11 as "Print report of cities in a region organised by population"
+
+
+
+    ST - UC11
+
+    UC11 ..> UCa : include
+
+    U11 - Database
+
+}
+
+@enduml
