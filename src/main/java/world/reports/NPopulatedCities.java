@@ -22,7 +22,7 @@ public class NPopulatedCities {
                     "ORDER BY ci.Population DESC;" +
                     "LIMIT N";
 
-            List<city> result = new ArrayList<>();
+            List<City> result = new ArrayList<>();
 
             ResultSet rSet = stmt.executeQuery(strSelect);
 
@@ -40,7 +40,7 @@ public class NPopulatedCities {
             }
 
             System.out.println("Finished reading data");
-            return result1;
+            return result;
         }
         catch (Exception e)
         {
