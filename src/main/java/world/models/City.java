@@ -21,4 +21,9 @@ public class City {
      */
 
     public String District;
+
+    /**
+     * City Population
+     */
+    public int population;
 }
