@@ -2,8 +2,8 @@ Use Case 08
 
 CHARACTERISTIC INFORMATION
 Goal in Context
-As a statistician, I want to be able to see a report of the number of people who speak the following languages from greatest number to smallest,
-including the percentage of the world population: Chinese, English, Hindi, Spanish, Arabic.
+As a statistician, I want to be able to see a report of the number of people who speak Chinese, English, Hindi, Spanish and Arabic from greatest number to smallest,
+including the percentage of the world population.
 Scope
 Company.
 Level
@@ -20,8 +20,8 @@ Trigger
 A request for language information is sent to statistician.
 MAIN SUCCESS SCENARIO
 Population information is requested.
-Statistician extracts report of I want to be able to see a report of the number of people who speak the following languages from greatest number to smallest,
-                                including the percentage of the world population: Chinese, English, Hindi, Spanish, Arabic.
+Statistician extracts report of the number of people who speak Chinese, English, Hindi, Spanish and Arabic from greatest number to smallest,
+                                including the percentage of the world population.
 Statistician provides report.
 EXTENSIONS
 
