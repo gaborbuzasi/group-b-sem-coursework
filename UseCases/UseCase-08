@@ -1,0 +1,31 @@
+Use Case 08
+
+CHARACTERISTIC INFORMATION
+Goal in Context
+As a statistician, I want to be able to see a report of the number of people who speak the following languages from greatest number to smallest,
+including the percentage of the world population: Chinese, English, Hindi, Spanish, Arabic.
+Scope
+Company.
+Level
+Primary task.
+Preconditions
+We know the role. Database contains current country, city and population data .
+Success End Condition
+A report is available for statistician.
+Failed End Condition
+No report is produced.
+Primary Actor
+Statistician .
+Trigger
+A request for language information is sent to statistician.
+MAIN SUCCESS SCENARIO
+Population information is requested.
+Statistician extracts report of I want to be able to see a report of the number of people who speak the following languages from greatest number to smallest,
+                                including the percentage of the world population: Chinese, English, Hindi, Spanish, Arabic.
+Statistician provides report.
+EXTENSIONS
+
+SUB-VARIATIONS
+None.
+SCHEDULE
+DUE DATE: Release 2.0
