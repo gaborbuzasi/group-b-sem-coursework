@@ -1,0 +1,16 @@
+@startuml
+actor Statistics as "Statistician"
+
+rectangle Database
+
+rectangle "Population Information System" {
+    usecase UC1 as "Get report of the number of people in the world who speak Chinese, English, Hindi, Spanish and Arabic from greatest number to smallest,
+                                                                              including the percentage of the world population  "
+
+    usecase UC1 as "Print report of the number of people in the world who speak Chinese, English, Hindi, Spanish and Arabic from greatest number to smallest, including the percentage of the world population  "
+
+    ST - UC1
+    UC1 ..> UCa : include
+    UC1 - Database
+}
+@enduml
