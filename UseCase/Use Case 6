@@ -1,0 +1,29 @@
+@startuml
+
+actor Statistics as "Statistician"
+
+
+
+rectangle Database
+
+
+
+rectangle "Population Information System" {
+
+    usecase UC6 as "Get report of The population of a city "
+
+
+
+    usecase UC6 as "Print report of The population of a city"
+
+
+
+    ST - UC6
+
+    UC6 ..> UCa : include
+
+    UC6 - Database
+
+}
+
+@enduml
