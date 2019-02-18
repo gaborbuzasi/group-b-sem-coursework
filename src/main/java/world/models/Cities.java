@@ -2,7 +2,7 @@ package world.models;
 
 
 
-class City {
+public class City {
 
     public String Name;
 

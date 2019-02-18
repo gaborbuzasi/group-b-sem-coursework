@@ -1,0 +1,29 @@
+@startuml
+
+actor Statistics as "Statistician"
+
+
+
+rectangle Database
+
+
+
+rectangle "Population Information System" {
+
+    usecase UC2 as "Get report of All the countries in the world organised by largest population to smallestA "
+
+
+
+    usecase UC2 as "Print report of countries organised by population"
+
+
+
+    ST - UC2
+
+    UC2 ..> UCa : include
+
+    UC2 - Database
+
+}
+
+@enduml
