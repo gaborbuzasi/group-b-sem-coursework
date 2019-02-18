@@ -1,0 +1,39 @@
+Use Case 01
+
+CHARACTERISTIC INFORMATION
+Goal in Context
+As a statistician, I want to be able to see a report of
+                                                        All the countries in the world organised by largest population to smallest.
+                                                        OR
+                                                        All the countries in a continent organised by largest population to smallest.
+                                                        OR
+                                                        All the countries in a region organised by largest population to smallest
+Scope
+Company.
+Level
+Primary task.
+Preconditions
+We know the role. Database contains current country, city and population data .
+Success End Condition
+A report is available for statistician.
+Failed End Condition
+No report is produced.
+Primary Actor
+Statistician .
+Trigger
+A request for population information is sent to statistician.
+MAIN SUCCESS SCENARIO
+Population information is requested.
+Statistician extracts report of
+                                All the countries in the world organised by largest population to smallest.
+                                OR
+                                All the countries in a continent organised by largest population to smallest.
+                                OR
+                                All the countries in a region organised by largest population to smallest
+Statistician provides report.
+EXTENSIONS
+
+SUB-VARIATIONS
+None.
+SCHEDULE
+DUE DATE: Release 2.0
