@@ -2,15 +2,14 @@ package world.reports;
 
 import world.connection.Connection;
 import world.models.City;
-import world.models.Country;
 
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NPopulatedCountries {
-    public static List<Country> getCountries()
+public class NPopulatedCities {
+    public static List<City> getCities()
     {
         try
         {
@@ -18,12 +17,12 @@ public class NPopulatedCountries {
             Connection conFactory = new Connection();
             Statement stmt = conFactory.conn.createStatement();
 
-            String strSelect = "SELECT c.Name, c.Population" +
-                                "FROM country c " +
-                                "ORDER BY c.Population DESC;" +
-                                "LIMIT N";
+            String strSelect = "SELECT ci.Name, ci.Population" +
+                    "FROM city ci " +
+                    "ORDER BY ci.Population DESC;" +
+                    "LIMIT N";
 
-            List<country> result = new ArrayList<>();
+            List<city> result = new ArrayList<>();
 
             ResultSet rSet = stmt.executeQuery(strSelect);
 
@@ -33,11 +32,11 @@ public class NPopulatedCountries {
                 String name = rSet.getString("Name");
                 int population = rSet.getInt("Population");
 
-                Country country = new Country();
-                country.Name = name;
-                country.population = population;
+                City city = new City();
+                city.Name = name;
+                city.population = population;
 
-                result.add(country);
+                result.add(city);
             }
 
             System.out.println("Finished reading data");
@@ -46,7 +45,7 @@ public class NPopulatedCountries {
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get country details");
+            System.out.println("Failed to get city details");
             return null;
         }
     }
