@@ -1,17 +1,24 @@
 package world.models;
 
-
-
 public class City {
+    /**
+     * City Code
+     */
+    public String Code;
 
-
-    public static int Population;
-
+    /**
+     * City Name
+     */
     public String Name;
 
-    public String CountryCode;
+    /**
+     * City Country
+     */
+    public String Country;
+
+    /**
+     *  City District
+     */
 
     public String District;
-
-
 }
