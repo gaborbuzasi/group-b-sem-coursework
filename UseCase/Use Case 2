@@ -15,7 +15,7 @@
 
 
            usecase UC2 as "Print report of countries organised by population"
-       
+
 
 
            ST - UC2
