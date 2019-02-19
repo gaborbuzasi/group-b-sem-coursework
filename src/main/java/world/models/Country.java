@@ -34,4 +34,9 @@ public class Country {
      * Population of country
      */
     public int Population;
+
+    /**
+     * Capital of country
+     */
+    public String Capital;
 }
