@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NPopulatedCities {
+public class NPopulatedCitiesWithinRegion {
     public static List<City> getCities()
     {
         try
@@ -19,6 +19,8 @@ public class NPopulatedCities {
 
             String strSelect = "SELECT ci.Name, ci.Population" +
                     "FROM city ci " +
+                    "JOIN country c on ci.country = c.name" +
+                    "WHERE c.region = REGION" +
                     "ORDER BY ci.Population DESC;" +
                     "LIMIT N";
 
@@ -26,7 +28,7 @@ public class NPopulatedCities {
 
             ResultSet rSet = stmt.executeQuery(strSelect);
 
-            //Do until there are no unprocessed records exisiting within the N limit
+            //Do until there are no unprocessed records existing within the N limit
             while (rSet.next())
             {
                 String name = rSet.getString("Name");
