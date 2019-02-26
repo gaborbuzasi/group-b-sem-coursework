@@ -13,18 +13,7 @@ public class Population {
     {
         try
         {
-            // Initializes a connection to the database
-            Connection conFactory = new Connection();
-            Statement stmt = conFactory.conn.createStatement();
-
-            String strSelect = "SELECT c.Code, c.Name, c.Continent, c.Region, c.Population, ci.Name AS Capital " +
-                    "FROM country c " +
-                    "LEFT JOIN city ci on c.Capital = ci.ID " +
-                    "ORDER BY c.Population DESC";
-
-            List<Country> result = new ArrayList<>();
-
-            ResultSet rSet = stmt.executeQuery(strSelect);
+            //TODO: implement this
 
             return null;
         }
