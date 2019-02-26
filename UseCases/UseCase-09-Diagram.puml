@@ -1,0 +1,15 @@
+@startuml
+actor Statistics as "Statistician"
+
+rectangle Database
+
+rectangle "Population Information System" {
+    usecase UC1 as "Get country report "
+
+    usecase UC1 as "Print country report"
+
+    ST - UC1
+    UC1 ..> UCa : include
+    UC1 - Database
+}
+@enduml

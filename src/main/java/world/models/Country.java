@@ -4,6 +4,7 @@ package world.models;
  * Represents a Country
  */
 public class Country {
+
     /**
      * Country Code
      */
@@ -35,7 +36,7 @@ public class Country {
     public int Population;
 
     /**
-     * Capital name of country
+     * Capital of country
      */
     public String Capital;
 }

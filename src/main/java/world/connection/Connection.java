@@ -25,7 +25,7 @@ public class Connection {
             try
             {
                 // Wait a bit for db to start
-                //Thread.sleep(30000);
+                Thread.sleep(2000);
                 // Connect to database
                 conn = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "example");
                 System.out.println("Successfully connected");
@@ -35,6 +35,8 @@ public class Connection {
             {
                 System.out.println("Failed to connect to database attempt " + Integer.toString(i));
                 System.out.println(sqle.getMessage());
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
             //catch (InterruptedException ie)
             //{

@@ -1,0 +1,29 @@
+@startuml
+
+actor Statistics as "Statistician"
+
+
+
+rectangle Database
+
+
+
+rectangle "Population Information System" {
+
+    usecase UC5 as "Get report of The top N populated capital cities in the world where N is provided by the user  "
+
+
+
+    usecase UC5 as "Print report of top N populated capital cities in the world where N is provided by the user"
+
+
+
+    ST - UC5
+
+    UC5 ..> UCa : include
+
+    UC5 - Database
+
+}
+
+@enduml
