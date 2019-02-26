@@ -1,15 +1,15 @@
 package world.reports;
 
 import world.connection.Connection;
-import world.models.City;
+import world.models.Country;
 
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NPopulatedCitiesWithinRegion {
-    public static List<City> getCities()
+public class NPopulatedCountriesWithinRegion {
+    public static List<Country> getCountries()
     {
         try
         {
@@ -17,14 +17,13 @@ public class NPopulatedCitiesWithinRegion {
             Connection conFactory = new Connection();
             Statement stmt = conFactory.conn.createStatement();
 
-            String strSelect = "SELECT ci.Name, ci.Population" +
-                    "FROM city ci " +
-                    "JOIN country c on ci.country = c.name" +
+            String strSelect = "SELECT c.Name, c.Population" +
+                    "FROM country c " +
                     "WHERE c.region = REGION" +
-                    "ORDER BY ci.Population DESC;" +
+                    "ORDER BY c.Population DESC;" +
                     "LIMIT N";
 
-            List<city> result = new ArrayList<>();
+            List<country> result = new ArrayList<>();
 
             ResultSet rSet = stmt.executeQuery(strSelect);
 
@@ -34,11 +33,11 @@ public class NPopulatedCitiesWithinRegion {
                 String name = rSet.getString("Name");
                 int population = rSet.getInt("Population");
 
-                City city = new City();
-                city.Name = name;
-                city.population = population;
+                Country country = new Country();
+                country.Name = name;
+                country.population = population;
 
-                result.add(city);
+                result.add(country);
             }
 
             System.out.println("Finished reading data");
@@ -47,7 +46,7 @@ public class NPopulatedCitiesWithinRegion {
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get city details");
+            System.out.println("Failed to get country details");
             return null;
         }
     }
