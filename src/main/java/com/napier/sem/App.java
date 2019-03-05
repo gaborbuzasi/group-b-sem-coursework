@@ -6,6 +6,7 @@ import world.models.Country;
 import world.models.SpokenLanguages;
 import world.reports.Cities;
 import world.reports.Countries;
+import world.reports.Population;
 import world.reports.SpokenLanguagesReport;
 
 import java.util.List;
@@ -22,6 +23,7 @@ public class App
         List<Country> allCountriesByDescPopulation = Countries.getCountriesByDescPopulation();
         List<City> allCitiesByDescPopulation = Cities.getCitiesByDescPopulation();
         List<SpokenLanguages> spokenLanguages = SpokenLanguagesReport.getCountriesByDescPopulation();
+        List<world.models.Population> populationOfContinent = Population.getPopulationOfContinent("Africa");
 
         if (allCapitalCities != null)
         {
@@ -38,6 +40,7 @@ public class App
         printCountries(allCountriesByDescPopulation, "All countries by descending population");
         printCities(allCitiesByDescPopulation, "All cities by descending population");
         printSpokenLanguages(spokenLanguages);
+        printPopulationOfContinent(populationOfContinent);
 
         System.out.println("Application stops");
     }
@@ -84,6 +87,20 @@ public class App
             for (SpokenLanguages s : languages)
             {
                 System.out.println("Language: " + s.Language + " - Population: " + s.Population + " - Percentage: " + s.Percentage);
+            }
+        }
+    }
+
+    private static void printPopulationOfContinent(List<world.models.Population> populations)
+    {
+        System.out.println();
+        System.out.println("Printing out " + "Population of Continent Africa");
+
+        if (populations != null)
+        {
+            for (world.models.Population pop : populations)
+            {
+                System.out.println("Name: " + pop.Name + " - Population: " + pop.TotalPopulation);
             }
         }
     }

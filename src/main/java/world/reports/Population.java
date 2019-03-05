@@ -27,10 +27,7 @@ public class Population {
 
             ResultSet rSet = stmt.executeQuery();
 
-
-
-
-            return null;
+            return processResults(rSet);
         }
         catch (Exception e)
         {
