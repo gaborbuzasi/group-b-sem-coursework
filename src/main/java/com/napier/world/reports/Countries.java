@@ -1,9 +1,8 @@
-package world.reports;
+package com.napier.world.reports;
 
-import world.connection.Connection;
-import world.models.Country;
+import com.napier.world.connection.Connection;
+import com.napier.world.models.Country;
 
-import javax.xml.transform.Result;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;

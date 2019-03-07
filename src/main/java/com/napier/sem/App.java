@@ -1,12 +1,12 @@
 package com.napier.sem;
 
-import world.models.CapitalCity;
-import world.models.City;
-import world.models.Country;
-import world.models.SpokenLanguages;
-import world.reports.Cities;
-import world.reports.Countries;
-import world.reports.SpokenLanguagesReport;
+import com.napier.world.models.CapitalCity;
+import com.napier.world.models.City;
+import com.napier.world.models.Country;
+import com.napier.world.models.SpokenLanguages;
+import com.napier.world.reports.Cities;
+import com.napier.world.reports.Countries;
+import com.napier.world.reports.SpokenLanguagesReport;
 
 import java.util.List;
 
