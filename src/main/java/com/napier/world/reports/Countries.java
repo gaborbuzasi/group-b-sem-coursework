@@ -67,8 +67,14 @@ public class Countries {
         }
     }
 
-    private static List<Country> processResults(ResultSet rSet)
+    public static List<Country> processResults(ResultSet rSet)
     {
+        if (rSet == null)
+        {
+            System.out.println("No records to process");
+            return null;
+        }
+
         List<Country> result = new ArrayList<>();
 
         try

@@ -116,8 +116,14 @@ public class Cities {
         }
     }
 
-    private static List<City> processResults(ResultSet rSet)
+    public static List<City> processResults(ResultSet rSet)
     {
+        if (rSet == null)
+        {
+            System.out.println("No records to process");
+            return null;
+        }
+
         List<City> results = new ArrayList<>();
 
         try
