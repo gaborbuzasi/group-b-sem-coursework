@@ -30,10 +30,19 @@ public class App
     public static void main(String[] args)
     {
         System.out.println("App starting...");
-        connectToDatabase("db");
+
+        if (args.length < 1)
+        {
+            connectToDatabase("localhost:3306");
+        }
+        else
+        {
+            connectToDatabase(args[0]);
+        }
+
         SpringApplication.run(App.class, args);
 
-/*
+        /*
         List<CapitalCity> allCapitalCities = Cities.getAllOrNCapitalCities(null);
         List<City> top5PopulatedCities = Cities.getNPopulatedCities(5);
         List<Country> top5PopulatedCountries = Countries.getNPopulatedCountries(5);
