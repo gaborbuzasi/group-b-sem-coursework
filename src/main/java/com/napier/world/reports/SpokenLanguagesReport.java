@@ -1,8 +1,8 @@
-package world.reports;
+package com.napier.world.reports;
 
 
-import world.connection.Connection;
-import world.models.SpokenLanguages;
+import com.napier.world.connection.Connection;
+import com.napier.world.models.SpokenLanguages;
 
 import java.sql.ResultSet;
 import java.sql.Statement;

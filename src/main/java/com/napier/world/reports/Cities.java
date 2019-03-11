@@ -1,8 +1,8 @@
-package world.reports;
+package com.napier.world.reports;
 
-import world.connection.Connection;
-import world.models.CapitalCity;
-import world.models.City;
+import com.napier.world.connection.Connection;
+import com.napier.world.models.City;
+import com.napier.world.models.CapitalCity;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
