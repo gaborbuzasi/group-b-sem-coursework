@@ -1,9 +1,18 @@
 package com.napier.world.reports;
 
+import com.napier.world.connection.Connection;
+
 import java.util.List;
 
 public class Population {
-    public static List<com.napier.world.models.Population> getPopulationOfContinent(String continent)
+    Connection Conn;
+
+    public Population(Connection conn)
+    {
+        Conn = conn;
+    }
+
+    public List<com.napier.world.models.Population> getPopulationOfContinent(String continent)
     {
         try
         {

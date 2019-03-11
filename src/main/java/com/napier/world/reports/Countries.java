@@ -12,13 +12,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Countries {
-    public static List<Country> getCountriesByDescPopulation()
+    Connection Conn;
+
+    public Countries(Connection conn) {
+        Conn = conn;
+    }
+
+    public List<Country> getCountriesByDescPopulation()
     {
         try
         {
             // Initializes a connection to the database
-            Connection conFactory = new ConnectionBuilder().buildConnection();
-            Statement stmt = conFactory.conn.createStatement();
+            Statement stmt = Conn.conn.createStatement();
 
             String strSelect = "SELECT c.Code, c.Name, c.Continent, c.Region, c.Population, ci.Name AS Capital " +
                                "FROM country c " +
@@ -39,13 +44,11 @@ public class Countries {
         }
     }
 
-    public static List<Country> getNPopulatedCountries(int numberOfRows)
+    public List<Country> getNPopulatedCountries(int numberOfRows)
     {
         try
         {
             // Initializes a connection to the database
-            Connection conFactory = new ConnectionBuilder().buildConnection();
-
             String strSelect = "SELECT c.Code, c.Name, c.Continent, c.Region, c.Population, ci.Name AS Capital " +
                     "FROM country c " +
                     "LEFT JOIN city ci on c.Capital = ci.ID " +
@@ -53,7 +56,7 @@ public class Countries {
                     "ORDER BY c.Population DESC " +
                     "LIMIT ?";
 
-            PreparedStatement stmt = conFactory.conn.prepareStatement(strSelect);
+            PreparedStatement stmt = Conn.conn.prepareStatement(strSelect);
             stmt.setInt(1, numberOfRows);
 
             ResultSet rSet = stmt.executeQuery();

@@ -12,13 +12,19 @@ import java.util.List;
 
 public class SpokenLanguagesReport
 {
-    public static List<SpokenLanguages> getCountriesByDescPopulation()
+    Connection Conn;
+
+    public SpokenLanguagesReport(Connection conn)
+    {
+        Conn = conn;
+    }
+
+    public List<SpokenLanguages> getCountriesByDescPopulation()
     {
         try
         {
             // Initializes a connection to the database
-            Connection conFactory = new ConnectionBuilder().buildConnection();
-            Statement stmt = conFactory.conn.createStatement();
+            Statement stmt = Conn.conn.createStatement();
 
             String strSelect = "SELECT DISTINCT cl.Language, SUM(c.Population) AS Population, SUM((SELECT (c.Population/SUM(Population)) FROM country)) * 100 AS Percentage " +
                     "FROM countrylanguage cl " +

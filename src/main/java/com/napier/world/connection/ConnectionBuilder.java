@@ -2,7 +2,7 @@ package com.napier.world.connection;
 
 public class ConnectionBuilder
 {
-    private String _location = "db:3306";
+    private String _location = "db";
 
     public ConnectionBuilder() {}
 

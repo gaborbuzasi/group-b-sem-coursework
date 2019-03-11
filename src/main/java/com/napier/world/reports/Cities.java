@@ -13,13 +13,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cities {
-    public static List<CapitalCity> getAllOrNCapitalCities(Integer numberOfRows)
+    Connection Conn;
+
+    public Cities(Connection conn) {
+        Conn = conn;
+    }
+
+    public List<CapitalCity> getAllOrNCapitalCities(Integer numberOfRows)
     {
         try
         {
             // Initializes a connection to the database
-            Connection conFactory = new ConnectionBuilder().buildConnection();
-
             String strSelect = "SELECT ci.Name AS Capital, c.Name AS Country, ci.Population AS Population " +
                     "FROM country c " +
                     "LEFT JOIN city ci on c.Capital = ci.ID " +
@@ -29,7 +33,7 @@ public class Cities {
                 strSelect += " LIMIT ?";
             }
 
-            PreparedStatement stmt = conFactory.conn.prepareStatement(strSelect);
+            PreparedStatement stmt = Conn.conn.prepareStatement(strSelect);
 
             if (numberOfRows != null) {
                 stmt.setInt(1, numberOfRows);
@@ -65,12 +69,11 @@ public class Cities {
         }
     }
 
-    public static List<City> getCitiesByDescPopulation() {
+    public List<City> getCitiesByDescPopulation() {
         try
         {
             // Initializes a connection to the database
-            Connection conFactory = new ConnectionBuilder().buildConnection();
-            Statement stmt = conFactory.conn.createStatement();
+            Statement stmt = Conn.conn.createStatement();
 
             String strSelect = "SELECT ci.Name, c.Name AS Country, ci.District, ci.Population " +
                                "FROM city ci " +
@@ -89,12 +92,10 @@ public class Cities {
         }
     }
 
-    public static List<City> getNPopulatedCities(int numberOfRows) {
+    public List<City> getNPopulatedCities(int numberOfRows) {
         try
         {
             // Initializes a connection to the database
-            Connection conFactory = new ConnectionBuilder().buildConnection();
-
             String strSelect =  "SELECT ci.Name, c.Name as Country, ci.District, ci.Population " +
                                 "FROM city ci " +
                                 "LEFT JOIN country c on ci.CountryCode = c.Code " +
@@ -102,7 +103,7 @@ public class Cities {
                                 "ORDER BY ci.Population DESC " +
                                 "LIMIT ?";
 
-            PreparedStatement stmt = conFactory.conn.prepareStatement(strSelect);
+            PreparedStatement stmt = Conn.conn.prepareStatement(strSelect);
             stmt.setInt(1, numberOfRows);
             ResultSet rSet = stmt.executeQuery();
 

@@ -2,7 +2,7 @@ package com.napier.world.reports;
 
 import org.junit.jupiter.api.Test;
 
-class ReportTests
+public class ReportTests
 {
     @Test
     void processCitiesResultsNull()
