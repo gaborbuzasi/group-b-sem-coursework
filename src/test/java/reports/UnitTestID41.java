@@ -17,6 +17,9 @@ class City
         Cities getAllOrNCapitalCities = new Cities();
     }
 
+    public static void getCitiesByDescPopulation(ArrayList<world.models.City> cities) {
+    }
+
     @Test
     void getAllOrNCapitalCitiesNull()
     {
