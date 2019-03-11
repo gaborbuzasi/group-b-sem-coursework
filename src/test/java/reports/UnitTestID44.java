@@ -1,15 +1,12 @@
-package com.napier.sem;
+package reports;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
 import world.models.CapitalCity;
 import world.reports.Cities;
 
 
 import java.util.ArrayList;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class City
 {
