@@ -1,6 +1,7 @@
 package com.napier.world.reports;
 
 import com.napier.world.connection.Connection;
+import com.napier.world.connection.ConnectionBuilder;
 import com.napier.world.models.City;
 import com.napier.world.models.CapitalCity;
 
@@ -17,7 +18,7 @@ public class Cities {
         try
         {
             // Initializes a connection to the database
-            Connection conFactory = new Connection();
+            Connection conFactory = new ConnectionBuilder().buildConnection();
 
             String strSelect = "SELECT ci.Name AS Capital, c.Name AS Country, ci.Population AS Population " +
                     "FROM country c " +
@@ -68,7 +69,7 @@ public class Cities {
         try
         {
             // Initializes a connection to the database
-            Connection conFactory = new Connection();
+            Connection conFactory = new ConnectionBuilder().buildConnection();
             Statement stmt = conFactory.conn.createStatement();
 
             String strSelect = "SELECT ci.Name, c.Name AS Country, ci.District, ci.Population " +
@@ -92,7 +93,7 @@ public class Cities {
         try
         {
             // Initializes a connection to the database
-            Connection conFactory = new Connection();
+            Connection conFactory = new ConnectionBuilder().buildConnection();
 
             String strSelect =  "SELECT ci.Name, c.Name as Country, ci.District, ci.Population " +
                                 "FROM city ci " +

@@ -1,6 +1,7 @@
 package com.napier.world.reports;
 
 import com.napier.world.connection.Connection;
+import com.napier.world.connection.ConnectionBuilder;
 import com.napier.world.models.Country;
 
 import java.sql.PreparedStatement;
@@ -16,7 +17,7 @@ public class Countries {
         try
         {
             // Initializes a connection to the database
-            Connection conFactory = new Connection();
+            Connection conFactory = new ConnectionBuilder().buildConnection();
             Statement stmt = conFactory.conn.createStatement();
 
             String strSelect = "SELECT c.Code, c.Name, c.Continent, c.Region, c.Population, ci.Name AS Capital " +
@@ -43,7 +44,7 @@ public class Countries {
         try
         {
             // Initializes a connection to the database
-            Connection conFactory = new Connection();
+            Connection conFactory = new ConnectionBuilder().buildConnection();
 
             String strSelect = "SELECT c.Code, c.Name, c.Continent, c.Region, c.Population, ci.Name AS Capital " +
                     "FROM country c " +

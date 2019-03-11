@@ -7,10 +7,10 @@ public class Connection {
 
     public java.sql.Connection conn;
 
-    public Connection() {
+    public Connection(String location) {
         try
         {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
         }
         catch (ClassNotFoundException e)
         {
@@ -27,7 +27,7 @@ public class Connection {
                 // Wait a bit for db to start
                 Thread.sleep(2000);
                 // Connect to database
-                conn = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "example");
+                conn = DriverManager.getConnection("jdbc:mysql://" + location + "/worldallowPublicKeyRetrieval=true&useSSL=false", "root", "example");
                 System.out.println("Successfully connected");
                 break;
             }
@@ -35,13 +35,11 @@ public class Connection {
             {
                 System.out.println("Failed to connect to database attempt " + Integer.toString(i));
                 System.out.println(sqle.getMessage());
-            } catch (InterruptedException e) {
-                e.printStackTrace();
             }
-            //catch (InterruptedException ie)
-            //{
-            //    System.out.println("Thread interrupted? Should not happen.");
-            //}
+            catch (InterruptedException ie)
+            {
+                System.out.println("Thread interrupted? Should not happen.");
+            }
         }
     }
 

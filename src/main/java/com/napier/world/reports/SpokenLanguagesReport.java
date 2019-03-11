@@ -2,6 +2,7 @@ package com.napier.world.reports;
 
 
 import com.napier.world.connection.Connection;
+import com.napier.world.connection.ConnectionBuilder;
 import com.napier.world.models.SpokenLanguages;
 
 import java.sql.ResultSet;
@@ -16,7 +17,7 @@ public class SpokenLanguagesReport
         try
         {
             // Initializes a connection to the database
-            Connection conFactory = new Connection();
+            Connection conFactory = new ConnectionBuilder().buildConnection();
             Statement stmt = conFactory.conn.createStatement();
 
             String strSelect = "SELECT DISTINCT cl.Language, SUM(c.Population) AS Population, SUM((SELECT (c.Population/SUM(Population)) FROM country)) * 100 AS Percentage " +
