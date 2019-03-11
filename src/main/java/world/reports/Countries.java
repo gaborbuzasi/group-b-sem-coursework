@@ -67,7 +67,32 @@ public class Countries {
             return null;
         }
     }
+    public static List<Country> getCountriesinregion(int numberOfRows)
+    {
+        try
+        {
+            // Initializes a connection to the database
+            Connection conFactory = new Connection();
 
+            String strSelect = "SELECT c.Code, c.Name AS Country, c.Continent, c.Region, c.Population " +
+                    "FROM country c " +
+                    "ORDER BY c.Population DESC " +
+                    "LIMIT ?";
+
+            PreparedStatement stmt = conFactory.conn.prepareStatement(strSelect);
+            stmt.setInt(1, numberOfRows);
+
+            ResultSet rSet = stmt.executeQuery();
+
+            return processResults(rSet);
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get country details");
+            return null;
+        }
+    }
     private static List<Country> processResults(ResultSet rSet)
     {
         List<Country> result = new ArrayList<>();
