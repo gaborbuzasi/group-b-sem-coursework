@@ -1,5 +1,5 @@
 FROM openjdk:latest
 EXPOSE 8888
-COPY ./target/BTeamCoursework.jar /tmp
+COPY ./target/BTeamCoursework-0.1.1.0.jar /tmp
 WORKDIR /tmp
-ENTRYPOINT ["java", "-jar", "BTeamCoursework.jar", "db:3306"]
+ENTRYPOINT ["java", "-jar", "BTeamCoursework-0.1.1.0.jar", "db:3306"]
