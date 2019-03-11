@@ -1,4 +1,4 @@
-package world.connection;
+package com.napier.world.connection;
 
 import java.sql.DriverManager;
 import java.sql.SQLException;

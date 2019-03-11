@@ -1,4 +1,4 @@
-package world.models;
+package com.napier.world.models;
 
 /**
  * Model for the report of spoken languages in each country
