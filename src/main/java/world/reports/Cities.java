@@ -115,7 +115,30 @@ public class Cities {
             return null;
         }
     }
+    public static List<City> getPopulationofCity(int numberOfRows) {
+        try
+        {
+            // Initializes a connection to the database
+            Connection conFactory = new Connection();
 
+            String strSelect =  "SELECT  ci.Name as City, ci.Population " +
+                    "FROM city ci " +
+                    "ORDER BY ci.Population DESC " ;
+
+            PreparedStatement stmt = conFactory.conn.prepareStatement(strSelect);
+            stmt.setInt(1, numberOfRows);
+            ResultSet rSet = stmt.executeQuery();
+
+            return processResults(rSet);
+
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to retrieve city population details");
+            return null;
+        }
+    }
     private static List<City> processResults(ResultSet rSet)
     {
         List<City> results = new ArrayList<>();
