@@ -15,7 +15,7 @@ install:
   - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 
 before_script:
-  - mvc_clean
+  - mvn clean
 
 jobs:
   include:
