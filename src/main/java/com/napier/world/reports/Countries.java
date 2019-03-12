@@ -110,6 +110,31 @@ public class Countries {
             return null;
         }
     }
+
+    public List<Country> getAllCountriesInContinentByDescPopulation(String continent)
+    {
+        try
+        {
+            String strSelect = "SELECT c.Code, c.Name, c.Continent, c.Region, c.Population, ci.Name AS Capital " +
+                    "FROM country c " +
+                    "LEFT JOIN city ci on c.Capital = ci.ID " +
+                    "WHERE c.Continent = ? " +
+                    "ORDER BY c.Population DESC ";
+
+            PreparedStatement stmt = Conn.conn.prepareStatement(strSelect);
+            stmt.setString(1, continent);
+
+            ResultSet rSet = stmt.executeQuery();
+
+            return processResults(rSet);
+        }
+        catch (Exception ex)
+        {
+            System.out.println(ex.getMessage());
+            System.out.println("Failed to get country details");
+            return null;
+        }
+    }
     
     public static List<Country> processResults(ResultSet rSet) {
         if (rSet == null) {

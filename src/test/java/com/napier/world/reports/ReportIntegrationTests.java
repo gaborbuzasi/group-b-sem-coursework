@@ -56,6 +56,12 @@ public class ReportIntegrationTests
         assertTrue(result.size() > 0);
     }
 
+    @Test
+    void testGetAllCountriesInContinentByDescPopulation()
+    {
+        List<Country> result = new Countries(app.Conn).getAllCountriesInContinentByDescPopulation("Africa");
+        assertTrue(result.size() > 0);
+    }
 
     @Test
     void testNPopulatedCountriesWithinRegion()
