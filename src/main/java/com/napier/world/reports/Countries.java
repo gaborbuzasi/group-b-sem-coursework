@@ -1,9 +1,9 @@
-package world.reports;
+package com.napier.world.reports;
 
-import world.connection.Connection;
-import world.models.Country;
+import com.napier.world.connection.Connection;
+import com.napier.world.connection.ConnectionBuilder;
+import com.napier.world.models.Country;
 
-import javax.xml.transform.Result;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,13 +12,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Countries {
-    public static List<Country> getCountriesByDescPopulation()
+    Connection Conn;
+
+    public Countries(Connection conn) {
+        Conn = conn;
+    }
+
+    public List<Country> getCountriesByDescPopulation()
     {
         try
         {
             // Initializes a connection to the database
-            Connection conFactory = new Connection();
-            Statement stmt = conFactory.conn.createStatement();
+            Statement stmt = Conn.conn.createStatement();
 
             String strSelect = "SELECT c.Code, c.Name, c.Continent, c.Region, c.Population, ci.Name AS Capital " +
                                "FROM country c " +
@@ -39,13 +44,11 @@ public class Countries {
         }
     }
 
-    public static List<Country> getNPopulatedCountries(int numberOfRows)
+    public List<Country> getNPopulatedCountries(int numberOfRows)
     {
         try
         {
             // Initializes a connection to the database
-            Connection conFactory = new Connection();
-
             String strSelect = "SELECT c.Code, c.Name, c.Continent, c.Region, c.Population, ci.Name AS Capital " +
                     "FROM country c " +
                     "LEFT JOIN city ci on c.Capital = ci.ID " +
@@ -53,7 +56,7 @@ public class Countries {
                     "ORDER BY c.Population DESC " +
                     "LIMIT ?";
 
-            PreparedStatement stmt = conFactory.conn.prepareStatement(strSelect);
+            PreparedStatement stmt = Conn.conn.prepareStatement(strSelect);
             stmt.setInt(1, numberOfRows);
 
             ResultSet rSet = stmt.executeQuery();
@@ -99,8 +102,14 @@ public class Countries {
         }
     }
 
-    private static List<Country> processResults(ResultSet rSet)
+    public static List<Country> processResults(ResultSet rSet)
     {
+        if (rSet == null)
+        {
+            System.out.println("No records to process");
+            return null;
+        }
+
         List<Country> result = new ArrayList<>();
 
         try

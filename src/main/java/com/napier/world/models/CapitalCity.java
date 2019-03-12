@@ -1,4 +1,4 @@
-package world.models;
+package com.napier.world.models;
 
 public class CapitalCity {
 
@@ -8,4 +8,6 @@ public class CapitalCity {
 
     public int Population;
 
+    public static void add(CapitalCity cc) {
+    }
 }

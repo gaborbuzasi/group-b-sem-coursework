@@ -1,4 +1,4 @@
-package world.models;
+package com.napier.world.models;
 
 /**
  * Represents a Country
