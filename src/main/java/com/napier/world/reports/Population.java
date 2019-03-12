@@ -1,16 +1,19 @@
-package world.reports;
+package com.napier.world.reports;
 
-import world.connection.Connection;
-import world.models.Country;
+import com.napier.world.connection.Connection;
 
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Population {
-    public static List<world.models.Population> getPopulationOfContinent(String continent)
+    Connection Conn;
+
+    public Population(Connection conn)
+    {
+        Conn = conn;
+    }
+
+    public List<com.napier.world.models.Population> getPopulationOfContinent(String continent)
     {
         try
         {
