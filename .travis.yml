@@ -31,7 +31,7 @@ jobs:
     jdk: oraclejdk11
     script:
       - mvn package -DskipTests=true -Dmaven.javadoc.skip=true
-      - docker-compose up
+      - docker-compose build
 
 stages:
 - unit tests
