@@ -197,6 +197,13 @@ public class ReportIntegrationTests
     }
 
     @Test
+    void testGetNPopulatedCitiesInDistrict()
+    {
+        List<City> cities = new Cities(app.Conn).getNPopulatedCitiesInDistrict(10, "Herat");
+        assertTrue(cities.size() > 0);
+    }
+
+    @Test
     void testGetNPopulatedCitiesInCountry()
     {
         List<City> cities = new Cities(app.Conn).getNPopulatedCitiesInCountry(10, "Hungary");
