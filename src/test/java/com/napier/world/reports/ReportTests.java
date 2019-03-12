@@ -21,4 +21,10 @@ public class ReportTests
     {
         Population.processResults(null);
     }
+
+    @Test
+    void processPopulationInfosResultsNull()
+    {
+        PopulationInfos.processResults(null);
+    }
 }
