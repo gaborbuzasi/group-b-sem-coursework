@@ -1,9 +1,40 @@
-sudo: required
-
 language: java
 
-services:
-- docker
+sudo: false
 
-after_success:
-- docker-compose build
+addons:
+  hosts:
+    - db
+
+services:
+  - docker
+
+install:
+  - docker build -t db db/.
+  - docker run --rm -d -e MYSQL_ROOT_PASSWORD=example -p 33060:3306 db --default-authentication-plugin=mysql_native_password
+  - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+
+before_script:
+  - mvn clean
+
+jobs:
+  include:
+  - stage: unit tests
+    install: skip
+    jdk: oraclejdk11
+    script: mvn test -Dtest=com.napier.world.reports.ReportTests
+  - stage: integration tests
+    jdk: oraclejdk11
+    script: mvn test -Dtest=com.napier.world.reports.ReportIntegrationTests
+  - stage: deploy
+    install: skip
+    jdk: oraclejdk11
+    script:
+      - mvn package -DskipTests=true -Dmaven.javadoc.skip=true
+      - docker-compose build --abort-on-container-exit
+
+stages:
+- unit tests
+- integration tests
+- name: deploy
+  if: branch = master

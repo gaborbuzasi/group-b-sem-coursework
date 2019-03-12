@@ -1,5 +1,6 @@
 package com.napier.sem;
 
+import com.napier.world.connection.Connection;
 import com.napier.world.models.CapitalCity;
 import com.napier.world.models.City;
 import com.napier.world.models.Country;
@@ -14,6 +15,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
+import com.napier.world.connection.ConnectionBuilder;
+
 import java.util.List;
 
 @EnableAutoConfiguration
@@ -22,12 +25,24 @@ import java.util.List;
 
 public class App
 {
+    public static Connection Conn;
+
     public static void main(String[] args)
     {
         System.out.println("App starting...");
+
+        if (args.length < 1)
+        {
+            connectToDatabase("localhost:3306");
+        }
+        else
+        {
+            connectToDatabase(args[0]);
+        }
+
         SpringApplication.run(App.class, args);
 
-/*
+        /*
         List<CapitalCity> allCapitalCities = Cities.getAllOrNCapitalCities(null);
         List<City> top5PopulatedCities = Cities.getNPopulatedCities(5);
         List<Country> top5PopulatedCountries = Countries.getNPopulatedCountries(5);
@@ -53,6 +68,11 @@ public class App
 
         System.out.println("Application stops");
         */
+    }
+
+    public static void connectToDatabase(String name)
+    {
+        Conn = new ConnectionBuilder().location(name).buildConnection();
     }
 
     private static void printCountries(List<Country> countries, String message)
@@ -100,4 +120,5 @@ public class App
             }
         }
     }
+
 }

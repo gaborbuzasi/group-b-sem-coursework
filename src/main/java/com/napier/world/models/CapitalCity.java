@@ -8,4 +8,6 @@ public class CapitalCity {
 
     public int Population;
 
+    public static void add(CapitalCity cc) {
+    }
 }

@@ -19,7 +19,7 @@ public class ViewController {
     @RequestMapping("/all-countries")
     public String AllCountries(Model model) {
 
-        List<Country> countries = Countries.getCountriesByDescPopulation();
+        List<Country> countries = new Countries(App.Conn).getCountriesByDescPopulation();
 
         model.addAttribute("countries", countries);
         model.addAttribute("title", "Countries");
@@ -28,7 +28,7 @@ public class ViewController {
 
     @RequestMapping("/topn-countries")
     public String TopNPopulatedCountries(@RequestParam int numberOfCountries, Model model) {
-        List<Country> countries = Countries.getNPopulatedCountries(numberOfCountries);
+        List<Country> countries = new Countries(App.Conn).getNPopulatedCountries(numberOfCountries);
         model.addAttribute("countries", countries);
         model.addAttribute("title", "Top " + numberOfCountries + " populated countries");
         return "countries";
