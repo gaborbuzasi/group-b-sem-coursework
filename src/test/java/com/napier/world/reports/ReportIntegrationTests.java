@@ -37,7 +37,7 @@ public class ReportIntegrationTests
     @Test
     void testNPopulatedCountriesWithinRegion()
     {
-        List<Country> result = new Countries(app.Conn).NPopulatedCountriesWithinRegion();
+        List<Country> result = new Countries(app.Conn).NPopulatedCountriesWithinRegion(5, "Central Africa");
         assertTrue(result.size() > 0);
     }
 
