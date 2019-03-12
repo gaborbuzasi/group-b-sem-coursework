@@ -1,6 +1,7 @@
 package com.napier.world.reports;
 
 import com.napier.sem.App;
+import com.napier.world.models.City;
 import com.napier.world.models.Country;
 import com.napier.world.models.Population;
 import org.junit.jupiter.api.BeforeAll;
@@ -22,9 +23,16 @@ public class ReportIntegrationTests
 
         if (port == null)
         {
-            port = "localhost:3306";
+            port = "localhost:33060";
         }
         app.connectToDatabase(port);
+    }
+
+    @Test
+    void testGetPopulationOfCity()
+    {
+        List<City> result = new Cities(app.Conn).getPopulationOfCity("Edinburgh");
+        assertTrue(result.size() > 0);
     }
 
     @Test
@@ -33,6 +41,14 @@ public class ReportIntegrationTests
         List<Country> result = new Countries(app.Conn).getCountriesByDescPopulation();
         assertTrue(result.size() > 0);
     }
+
+    @Test
+    void testGetCountriesInRegion()
+    {
+        List<Country> result = new Countries(app.Conn).getCountriesInRegion("Central Africa");
+        assertTrue(result.size() > 0);
+    }
+
 
     @Test
     void testGetPopulationByRegion()

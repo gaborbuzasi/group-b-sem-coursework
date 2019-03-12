@@ -117,12 +117,35 @@ public class Cities {
             return null;
         }
     }
+    public List<City> getPopulationOfCity(String cityName) {
+        try
+        {            
+                    String strSelect =  "SELECT ci.Name as Name, " +
+                                               "ci.Population, " +
+                            "ci.District ," +
+                            "ci.CountryCode AS Country " +
+                    "FROM city ci " +
+                    "WHERE ci.Name = ? " +
+                    "ORDER BY ci.Population DESC " ;
+
+            PreparedStatement stmt = Conn.conn.prepareStatement(strSelect);
+            stmt.setString(1, cityName);
+            ResultSet rSet = stmt.executeQuery();
+
+            return processResults(rSet);
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to retrieve city population details");
+            return null;
+        }
+    }
 
     public static List<City> processResults(ResultSet rSet)
     {
         if (rSet == null)
         {
-            System.out.println("No records to process");
             return null;
         }
 
