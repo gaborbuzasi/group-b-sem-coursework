@@ -16,7 +16,14 @@ public class ReportIntegrationTests
     static void init()
     {
         app = new App();
-        app.connectToDatabase("db:33060");
+
+        String port = System.getProperty("portNumber");
+
+        if (port == null)
+        {
+            port = "localhost:3306";
+        }
+        app.connectToDatabase(port);
     }
 
     @Test

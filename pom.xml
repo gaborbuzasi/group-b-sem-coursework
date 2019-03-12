@@ -99,6 +99,14 @@
                         <version>[5.3.2,)</version>
                     </dependency>
                 </dependencies>
+                <configuration>
+                    <systemProperties>
+                        <property>
+                            <name>portNumber</name>
+                            <value>${portNumber}</value>
+                        </property>
+                    </systemProperties>
+                </configuration>
             </plugin>
         </plugins>
     </build>
