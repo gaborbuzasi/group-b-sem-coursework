@@ -188,4 +188,11 @@ public class ReportIntegrationTests
         List<City> cities = new Cities(app.Conn).getAllCitiesInContinentByDescPopulation("Africa");
         assertTrue(cities.size() > 0);
     }
+
+    @Test
+    void testGetAllCitiesInCountryByDescPopulation()
+    {
+        List<City> cities = new Cities(app.Conn).getAllCitiesInCountryByDescPopulation("Hungary");
+        assertTrue(cities.size() > 0);
+    }
 }

@@ -268,6 +268,29 @@ public class Cities {
         }
     }
 
+    public List<City> getAllCitiesInCountryByDescPopulation(String country) {
+        try
+        {
+            String strSelect =  "SELECT ci.Name, c.Name AS Country, ci.District, ci.Population " +
+                    "FROM country c " +
+                    "LEFT JOIN city ci on c.Code = ci.CountryCode " +
+                    "WHERE c.Name = ? " +
+                    "ORDER BY ci.Population DESC ";
+
+            PreparedStatement stmt = Conn.conn.prepareStatement(strSelect);
+            stmt.setString(1, country);
+            ResultSet rSet = stmt.executeQuery();
+
+            return processResults(rSet);
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to retrieve country's cities population details");
+            return null;
+        }
+    }
+
     public static List<City> processResults(ResultSet rSet)
     {
         if (rSet == null)
