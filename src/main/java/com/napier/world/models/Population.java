@@ -2,7 +2,7 @@ package com.napier.world.models;
 
 public class Population {
     public String Name;
-    public int TotalPopulation;
-    public float LivinginCities;
-    public float NotLivinginCities; 
+    public float TotalPopulation;
+    public String LivingInCities;
+    public String NotLivingInCities;
 }

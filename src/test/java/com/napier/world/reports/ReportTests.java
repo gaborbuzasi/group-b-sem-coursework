@@ -15,4 +15,10 @@ public class ReportTests
     {
         Countries.processResults(null);
     }
+
+    @Test
+    void processPopulationsResultsNull()
+    {
+        Population.processResults(null);
+    }
 }
