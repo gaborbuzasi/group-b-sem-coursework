@@ -120,7 +120,10 @@ public class Cities {
     public List<City> getPopulationOfCity(String cityName) {
         try
         {            
-                    String strSelect =  "SELECT  ci.Name as City, ci.Population " +
+                    String strSelect =  "SELECT ci.Name as Name, " +
+                                               "ci.Population, " +
+                            "ci.District ," +
+                            "ci.CountryCode AS Country " +
                     "FROM city ci " +
                     "WHERE ci.Name = ? " +
                     "ORDER BY ci.Population DESC " ;
@@ -138,6 +141,7 @@ public class Cities {
             return null;
         }
     }
+
     public static List<City> processResults(ResultSet rSet)
     {
         if (rSet == null)
