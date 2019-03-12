@@ -85,7 +85,31 @@ public class Countries {
             return null;
         }
     }
+    public List<Country> getCountriesInRegion(String region)
+    {
+        try
+        {
+            String strSelect = "SELECT c.Code, c.Name, c.Continent, c.Region, c.Population, ci.Name AS Capital " +
+                    "FROM country c " +
+                    "LEFT JOIN city ci on c.Capital = ci.ID " +
+                    "WHERE c.Region = ? " +
+                    "ORDER BY c.Population DESC ";
 
+            PreparedStatement stmt = Conn.conn.prepareStatement(strSelect);
+            stmt.setString(1, region);
+
+            ResultSet rSet = stmt.executeQuery();
+
+            return processResults(rSet);
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get country details");
+            return null;
+        }
+    }
+    
     public static List<Country> processResults(ResultSet rSet) {
         if (rSet == null) {
             System.out.println("No records to process");
