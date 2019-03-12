@@ -117,6 +117,7 @@ public class Cities {
             return null;
         }
     }
+
     public List<City> getPopulationOfCity(String cityName) {
         try
         {            
@@ -130,6 +131,29 @@ public class Cities {
 
             PreparedStatement stmt = Conn.conn.prepareStatement(strSelect);
             stmt.setString(1, cityName);
+            ResultSet rSet = stmt.executeQuery();
+
+            return processResults(rSet);
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to retrieve city population details");
+            return null;
+        }
+    }
+
+    public List<City> getAllCitiesInRegionByDescPopulation(String region) {
+        try
+        {
+            String strSelect =  "SELECT ci.Name, c.Name AS Country, ci.District, ci.Population " +
+                                "FROM country c " +
+                                "LEFT JOIN city ci on c.Code = ci.CountryCode " +
+                                "WHERE c.Region = ? " +
+                                "ORDER BY ci.Population DESC ";
+
+            PreparedStatement stmt = Conn.conn.prepareStatement(strSelect);
+            stmt.setString(1, region);
             ResultSet rSet = stmt.executeQuery();
 
             return processResults(rSet);
