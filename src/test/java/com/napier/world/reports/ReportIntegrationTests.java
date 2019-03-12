@@ -16,7 +16,7 @@ public class ReportIntegrationTests
     static void init()
     {
         app = new App();
-        app.connectToDatabase("db:3306");
+        app.connectToDatabase("db:33060");
     }
 
     @Test
