@@ -95,7 +95,7 @@ public class Population {
                     "FROM city ci \n" +
                     "LEFT JOIN country co on ci.CountryCode = co.Code " +
                     "WHERE co.Continent = c.Continent " +
-                    "GROUP BY co.Continent) / SUM(c.Population) * 100, 2) AS CHAR(10)), '%')) AS NotLivingInCities " +
+                    "GROUP BY co.Continent) / SUM(c.Population) * 100, 2) AS CHAR(10)), '%') AS NotLivingInCities " +
                     "from country c " +
                     "group by c.Continent";
 
@@ -133,8 +133,8 @@ public class Population {
 
                 pop.Name = rSet.getString("Name");
                 pop.TotalPopulation = rSet.getFloat("TotalPopulation");
-                pop.LivinginCities = rSet.getString("LivingInCities");
-                pop.NotLivinginCities = rSet.getString("NotLivingInCities");
+                pop.LivingInCities = rSet.getString("LivingInCities");
+                pop.NotLivingInCities = rSet.getString("NotLivingInCities");
 
                 result.add(pop);
             }
