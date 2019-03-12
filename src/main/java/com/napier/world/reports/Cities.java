@@ -43,7 +43,59 @@ public class Cities {
 
             ResultSet rSet = stmt.executeQuery();
 
-            // Do until there's unprocessed records existing
+            return processCapitalCitiesResult(rSet);
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get country details");
+            return null;
+        }
+    }
+
+    public List<CapitalCity> getNPopulatedCapitalCitiesInRegion(Integer numberOfRows, String region)
+    {
+        try
+        {
+            // Initializes a connection to the database
+            String strSelect = "SELECT ci.Name AS Capital, c.Name AS Country, ci.Population AS Population " +
+                    "FROM country c " +
+                    "LEFT JOIN city ci on c.Capital = ci.ID " +
+                    "WHERE ci.Population > 0 and " +
+                    "c.Region = ? " +
+                    "ORDER BY c.Population DESC " +
+                    "LIMIT ?";
+
+            PreparedStatement stmt = Conn.conn.prepareStatement(strSelect);
+
+            stmt.setString(1, region);
+            stmt.setInt(2, numberOfRows);
+
+            List<CapitalCity> result = new ArrayList<>();
+
+            ResultSet rSet = stmt.executeQuery();
+
+            return processCapitalCitiesResult(rSet);
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get country details");
+            return null;
+        }
+    }
+
+    public static List<CapitalCity> processCapitalCitiesResult(ResultSet rSet)
+    {
+        if (rSet == null)
+        {
+            return null;
+        }
+
+        List<CapitalCity> result = new ArrayList<>();
+        // Do until there's unprocessed records existing
+        try
+        {
             while (rSet.next())
             {
                 String capital = rSet.getString("Capital");
@@ -61,10 +113,9 @@ public class Cities {
             System.out.println("Finished reading data");
             return result;
         }
-        catch (Exception e)
+        catch (SQLException ex)
         {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get country details");
+            System.out.println(ex);
             return null;
         }
     }
@@ -105,6 +156,34 @@ public class Cities {
 
             PreparedStatement stmt = Conn.conn.prepareStatement(strSelect);
             stmt.setInt(1, numberOfRows);
+            ResultSet rSet = stmt.executeQuery();
+
+            return processResults(rSet);
+
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to retrieve city details");
+            return null;
+        }
+    }
+
+    public List<City> getNPopulatedCitiesInContinent(int numberOfRows, String continent) {
+        try
+        {
+            // Initializes a connection to the database
+            String strSelect =  "SELECT ci.Name, c.Name as Country, ci.District, ci.Population " +
+                    "FROM city ci " +
+                    "LEFT JOIN country c on ci.CountryCode = c.Code " +
+                    "WHERE ci.Population > 0 AND " +
+                    "c.Continent = ? " +
+                    "ORDER BY ci.Population DESC " +
+                    "LIMIT ?";
+
+            PreparedStatement stmt = Conn.conn.prepareStatement(strSelect);
+            stmt.setString(1, continent);
+            stmt.setInt(2, numberOfRows);
             ResultSet rSet = stmt.executeQuery();
 
             return processResults(rSet);
