@@ -117,20 +117,19 @@ public class Cities {
             return null;
         }
     }
-    public static List<City> getPopulationofCity(int numberOfRows) {
+    public List<City> getPopulationOfCity(String cityName) {
         try
         {            
-        
-            String strSelect =  "SELECT  ci.Name as City, ci.Population " +
+                    String strSelect =  "SELECT  ci.Name as City, ci.Population " +
                     "FROM city ci " +
+                    "WHERE ci.Name = ? " +
                     "ORDER BY ci.Population DESC " ;
 
             PreparedStatement stmt = Conn.conn.prepareStatement(strSelect);
-            stmt.setInt(1, numberOfRows);
+            stmt.setString(1, cityName);
             ResultSet rSet = stmt.executeQuery();
 
             return processResults(rSet);
-
         }
         catch (Exception e)
         {
@@ -141,6 +140,11 @@ public class Cities {
     }
     private static List<City> processResults(ResultSet rSet)
     {
+        if (rSet == null)
+        {
+            return null;
+        }
+
         List<City> results = new ArrayList<>();
 
         try

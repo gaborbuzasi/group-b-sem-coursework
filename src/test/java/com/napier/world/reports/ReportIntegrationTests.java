@@ -1,6 +1,7 @@
 package com.napier.world.reports;
 
 import com.napier.sem.App;
+import com.napier.world.models.City;
 import com.napier.world.models.Country;
 import com.napier.world.models.Population;
 import org.junit.jupiter.api.BeforeAll;
@@ -25,6 +26,13 @@ public class ReportIntegrationTests
             port = "localhost:3306";
         }
         app.connectToDatabase(port);
+    }
+
+    @Test
+    void testGetPopulationOfCity()
+    {
+        List<City> result = new Cities(app.Conn).getPopulationOfCity("Edinburgh");
+        assertTrue(result.size() > 0);
     }
 
     @Test
