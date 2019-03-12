@@ -23,7 +23,7 @@ public class ReportIntegrationTests
 
         if (port == null)
         {
-            port = "localhost:3306";
+            port = "localhost:33060";
         }
         app.connectToDatabase(port);
     }
@@ -41,6 +41,14 @@ public class ReportIntegrationTests
         List<Country> result = new Countries(app.Conn).getCountriesByDescPopulation();
         assertTrue(result.size() > 0);
     }
+
+    @Test
+    void testGetCountriesInRegion()
+    {
+        List<Country> result = new Countries(app.Conn).getCountriesInRegion("Central Africa");
+        assertTrue(result.size() > 0);
+    }
+
 
     @Test
     void testGetPopulationByRegion()

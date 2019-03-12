@@ -70,20 +70,18 @@ public class Countries {
             return null;
         }
     }
-    public static List<Country> getCountriesinregion(int numberOfRows)
+    public List<Country> getCountriesInRegion(String region)
     {
         try
         {
-            // Initializes a connection to the database
-            Connection conFactory = new Connection();
-
-            String strSelect = "SELECT c.Code, c.Name AS Country, c.Continent, c.Region, c.Population " +
+            String strSelect = "SELECT c.Code, c.Name, c.Continent, c.Region, c.Population, ci.Name AS Capital " +
                     "FROM country c " +
-                    "ORDER BY c.Population DESC " +
-                    "LIMIT ?";
+                    "LEFT JOIN city ci on c.Capital = ci.ID " +
+                    "WHERE c.Region = ? " +
+                    "ORDER BY c.Population DESC ";
 
-            PreparedStatement stmt = conFactory.conn.prepareStatement(strSelect);
-            stmt.setInt(1, numberOfRows);
+            PreparedStatement stmt = Conn.conn.prepareStatement(strSelect);
+            stmt.setString(1, region);
 
             ResultSet rSet = stmt.executeQuery();
 
