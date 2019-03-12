@@ -167,4 +167,25 @@ public class ReportIntegrationTests
         List<City> cities = new Cities(app.Conn).getAllCitiesInRegionByDescPopulation("Central Africa");
         assertTrue(cities.size() > 0);
     }
+
+    @Test
+    void testGetNPopulatedCitiesInContinent()
+    {
+        List<City> cities = new Cities(app.Conn).getNPopulatedCitiesInContinent(5, "Asia");
+        assertTrue(cities.size() == 5);
+    }
+
+    @Test
+    void testGetNPopulatedCapitalCitiesInRegion()
+    {
+        List<CapitalCity> cities = new Cities(app.Conn).getNPopulatedCapitalCitiesInRegion(5, "Central Africa");
+        assertTrue(cities.size() == 5);
+    }
+
+    @Test
+    void testGetAllCitiesInContinentByDescPopulation()
+    {
+        List<City> cities = new Cities(app.Conn).getAllCitiesInContinentByDescPopulation("Africa");
+        assertTrue(cities.size() > 0);
+    }
 }
