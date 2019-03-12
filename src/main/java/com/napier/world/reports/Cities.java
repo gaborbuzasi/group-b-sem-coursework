@@ -138,7 +138,7 @@ public class Cities {
             return null;
         }
     }
-    private static List<City> processResults(ResultSet rSet)
+    public static List<City> processResults(ResultSet rSet)
     {
         if (rSet == null)
         {
