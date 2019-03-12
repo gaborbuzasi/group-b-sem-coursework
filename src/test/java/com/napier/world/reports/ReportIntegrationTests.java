@@ -174,6 +174,12 @@ public class ReportIntegrationTests
     {
         List<CapitalCity> cities = new Cities(app.Conn).getNPopulatedCapitalCitiesInRegion(5, "Central Africa");
         assertTrue(cities.size() == 5);
+    }
 
+    @Test
+    void testGetAllCitiesInContinentByDescPopulation()
+    {
+        List<City> cities = new Cities(app.Conn).getAllCitiesInContinentByDescPopulation("Africa");
+        assertTrue(cities.size() > 0);
     }
 }
