@@ -35,6 +35,13 @@ public class ReportIntegrationTests
     }
 
     @Test
+    void testNPopulatedCountriesWithinRegion()
+    {
+        List<Country> result = new Countries(app.Conn).NPopulatedCountriesWithinRegion();
+        assertTrue(result.size() > 0);
+    }
+
+    @Test
     void testGetPopulationByRegion()
     {
         List<Population> result = new com.napier.world.reports.Population(app.Conn).getPopulationByRegion();
