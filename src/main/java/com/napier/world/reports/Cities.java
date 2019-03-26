@@ -56,9 +56,9 @@ public class Cities {
 
     public List<City> NPopulatedCitiesWithinRegion(int numberOfRows, String region) {
         try {
-            String strSelect = "SELECT ci.Name, ci.Population, ci.Country " +
+            String strSelect = "SELECT ci.Name, ci.Population, c.Code AS Country " +
                     "FROM city ci " +
-                    "JOIN country c on ci.country = c.Name " +
+                    "JOIN country c on ci.CountryCode = c.Code " +
                     "WHERE c.Region = ? " +
                     "ORDER BY ci.Population DESC " +
                     "LIMIT ?";
