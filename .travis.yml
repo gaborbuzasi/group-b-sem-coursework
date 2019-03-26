@@ -50,9 +50,12 @@ jobs:
         # Copy built JAR file to release.  JAR built in $TRAVIS_BUILD_DIR/target
         file: $TRAVIS_BUILD_DIR/target/seMethods.jar
         skip_cleanup: true
-
+        
 stages:
-- unit tests
-- integration tests
-- name: deploy
-  if: branch = master
+  - unit tests
+  - integration tests
+  - name: GitHub Release
+    if: branch = master
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
