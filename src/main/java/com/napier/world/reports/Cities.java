@@ -220,8 +220,8 @@ public class Cities {
             return null;
         }
     }
-
-    public List<City> getNPopulatedCitiesInCountry(int numberOfRows, String country) {
+    
+        public List<City> getNPopulatedCitiesInCountry(int numberOfRows, String country) {
         try
         {
             String strSelect =  "SELECT ci.Name, c.Name as Country, ci.District, ci.Population " +
@@ -234,6 +234,34 @@ public class Cities {
 
             PreparedStatement stmt = Conn.conn.prepareStatement(strSelect);
             stmt.setString(1, country);
+            stmt.setInt(2, numberOfRows);
+            ResultSet rSet = stmt.executeQuery();
+
+            return processResults(rSet);
+
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to retrieve city details");
+            return null;
+        }
+    }
+
+    public List<City> getNPopulatedCitiesInDistrict(int numberOfRows, String district) {
+        try
+        {
+            // Initializes a connection to the database
+            String strSelect =  "SELECT ci.Name, c.Name as Country, ci.District, ci.Population " +
+                    "FROM city ci " +
+                    "LEFT JOIN country c on ci.CountryCode = c.Code " +
+                    "WHERE ci.Population > 0 AND " +
+                    "ci.District = ? " +
+                    "ORDER BY ci.Population DESC " +
+                    "LIMIT ?";
+
+            PreparedStatement stmt = Conn.conn.prepareStatement(strSelect);
+            stmt.setString(1, district);
             stmt.setInt(2, numberOfRows);
             ResultSet rSet = stmt.executeQuery();
 
@@ -315,6 +343,29 @@ public class Cities {
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to retrieve city population details");
+            return null;
+        }
+    }
+
+    public List<City> getAllCitiesInCountryByDescPopulation(String country) {
+        try
+        {
+            String strSelect =  "SELECT ci.Name, c.Name AS Country, ci.District, ci.Population " +
+                    "FROM country c " +
+                    "LEFT JOIN city ci on c.Code = ci.CountryCode " +
+                    "WHERE c.Name = ? " +
+                    "ORDER BY ci.Population DESC ";
+
+            PreparedStatement stmt = Conn.conn.prepareStatement(strSelect);
+            stmt.setString(1, country);
+            ResultSet rSet = stmt.executeQuery();
+
+            return processResults(rSet);
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to retrieve country's cities population details");
             return null;
         }
     }
