@@ -11,7 +11,7 @@ services:
 
 install:
   - docker build -t database db/.
-  - docker run --rm -d -e MYSQL_ROOT_PASSWORD=example -p 33060:3306 database
+  - docker run --rm -d -e MYSQL_ROOT_PASSWORD=example -p 33060:3306 database --default-authentication-plugin=mysql_native_password
   - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 
 before_script:
@@ -22,10 +22,10 @@ jobs:
     - stage: unit tests
       install: skip
       jdk: oraclejdk11
-      script: mvn test -Dtest=com.napier.sem.AppTest
+      script: mvn test -Dtest=com.napier.world.reports.ReportTests
     - stage: integration tests
       jdk: oraclejdk11
-      script: mvn test -Dtest=com.napier.sem.AppIntegrationTest
+      script: mvn test -Dtest=com.napier.world.reports.ReportIntegrationTests -DportNumber="db:33060"
     - stage: GitHub Release
       install: skip
       jdk: oraclejdk11
@@ -44,7 +44,7 @@ jobs:
         provider: releases
         api_key: $GITHUB_OAUTH_TOKEN
         # Copy built JAR file.  JAR built in $TRAVIS_BUILD_DIR/
-        file: $TRAVIS_BUILD_DIR/target/seMethods.jar
+        file: $TRAVIS_BUILD_DIR/target/BTeamCoursework-0.1.1.0.jar
         skip_cleanup: true
 
 stages:
