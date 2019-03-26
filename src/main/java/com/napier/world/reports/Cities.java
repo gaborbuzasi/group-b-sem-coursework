@@ -4,6 +4,7 @@ import com.napier.world.connection.Connection;
 import com.napier.world.connection.ConnectionBuilder;
 import com.napier.world.models.City;
 import com.napier.world.models.CapitalCity;
+import com.napier.world.models.Country;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -49,6 +50,30 @@ public class Cities {
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get country details");
+            return null;
+        }
+    }
+
+    public List<City> NPopulatedCitiesWithinRegion(int numberOfRows, String region) {
+        try {
+            String strSelect = "SELECT ci.Name, ci.Population, ci.District, c.Code AS Country " +
+                    "FROM city ci " +
+                    "JOIN country c on ci.CountryCode = c.Code " +
+                    "WHERE c.Region = ? " +
+                    "ORDER BY ci.Population DESC " +
+                    "LIMIT ?";
+
+            PreparedStatement stmt = Conn.conn.prepareStatement(strSelect);
+            stmt.setInt(2, numberOfRows);
+            stmt.setString(1, region);
+
+            ResultSet rSet = stmt.executeQuery();
+
+            return processResults(rSet);
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get city details");
             return null;
         }
     }
