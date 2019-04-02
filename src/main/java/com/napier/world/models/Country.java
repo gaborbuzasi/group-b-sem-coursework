@@ -1,7 +1,7 @@
 package com.napier.world.models;
 
 /**
- * Crating city model and attributes to use in reports
+ * Creating city model and attributes to use in reports
  */
 
 public class Country {

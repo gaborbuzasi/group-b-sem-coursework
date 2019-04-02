@@ -1,7 +1,7 @@
 package com.napier.world.models;
 
 /**
- * Crating capital city model and attributes to use in reports
+ * Creating capital city model and attributes to use in reports
  */
 
 public class CapitalCity {

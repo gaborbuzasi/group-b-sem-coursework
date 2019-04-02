@@ -1,7 +1,7 @@
 package com.napier.world.models;
 
 /**
- * Crating population model and attributes to use in reports
+ * Creating population model and attributes to use in reports
  */
 
 public class PopulationInfo
