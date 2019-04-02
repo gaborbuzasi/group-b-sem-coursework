@@ -190,6 +190,13 @@ public class ReportIntegrationTests
     }
 
     @Test
+    void testGetNPopulatedCapitalCitiesInContinent()
+    {
+        List<CapitalCity> cities = new Cities(app.Conn).getNPopulatedCapitalCitiesInContinent(5, "Asia");
+        assertTrue(cities.size() == 5);
+    }
+
+    @Test
     void testGetAllCitiesInContinentByDescPopulation()
     {
         List<City> cities = new Cities(app.Conn).getAllCitiesInContinentByDescPopulation("Africa");

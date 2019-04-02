@@ -96,7 +96,35 @@ public class Cities {
             stmt.setString(1, region);
             stmt.setInt(2, numberOfRows);
 
-            List<CapitalCity> result = new ArrayList<>();
+            ResultSet rSet = stmt.executeQuery();
+
+            return processCapitalCitiesResult(rSet);
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get country details");
+            return null;
+        }
+    }
+
+    public List<CapitalCity> getNPopulatedCapitalCitiesInContinent(Integer numberOfRows, String continent)
+    {
+        try
+        {
+            // Initializes a connection to the database
+            String strSelect = "SELECT ci.Name AS Capital, c.Name AS Country, ci.Population AS Population " +
+                    "FROM country c " +
+                    "LEFT JOIN city ci on c.Capital = ci.ID " +
+                    "WHERE ci.Population > 0 and " +
+                    "c.Continent = ? " +
+                    "ORDER BY c.Population DESC " +
+                    "LIMIT ?";
+
+            PreparedStatement stmt = Conn.conn.prepareStatement(strSelect);
+
+            stmt.setString(1, continent);
+            stmt.setInt(2, numberOfRows);
 
             ResultSet rSet = stmt.executeQuery();
 
