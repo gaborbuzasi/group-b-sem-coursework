@@ -155,6 +155,13 @@ public class ReportIntegrationTests
     }
 
     @Test
+    void testGetAllCapitalCitiesInRegion()
+    {
+        List<CapitalCity> capitals = new Cities(app.Conn).getAllCapitalCitiesInRegion("Central Africa");
+        assertTrue(capitals.size() > 0);
+    }
+
+    @Test
     void testGetCitiesByDescPopulation()
     {
         List<City> cities = new Cities(app.Conn).getCitiesByDescPopulation();

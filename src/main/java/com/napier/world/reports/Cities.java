@@ -40,7 +40,32 @@ public class Cities {
                 stmt.setInt(1, numberOfRows);
             }
 
-            List<CapitalCity> result = new ArrayList<>();
+            ResultSet rSet = stmt.executeQuery();
+
+            return processCapitalCitiesResult(rSet);
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get country details");
+            return null;
+        }
+    }
+
+    public List<CapitalCity> getAllCapitalCitiesInRegion(String region)
+    {
+        try
+        {
+            // Initializes a connection to the database
+            String strSelect = "SELECT ci.Name AS Capital, c.Name AS Country, ci.Population AS Population " +
+                    "FROM country c " +
+                    "LEFT JOIN city ci on c.Capital = ci.ID " +
+                    "WHERE c.Region = ? " +
+                    "ORDER BY c.Population DESC ";
+
+            PreparedStatement stmt = Conn.conn.prepareStatement(strSelect);
+
+            stmt.setString(1, region);
 
             ResultSet rSet = stmt.executeQuery();
 
