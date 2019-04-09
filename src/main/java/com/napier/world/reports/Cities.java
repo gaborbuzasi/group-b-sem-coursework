@@ -13,6 +13,10 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+Contains reports for cities type requirements
+ */
+
 public class Cities {
     Connection Conn;
 
@@ -22,6 +26,9 @@ public class Cities {
 
     public List<CapitalCity> getAllOrNCapitalCities(Integer numberOfRows)
     {
+        /*
+        Retrieves all or N capital cities in the world where N is a number entered by the user
+         */
         try
         {
             // Initializes a connection to the database
@@ -54,6 +61,9 @@ public class Cities {
 
     public List<CapitalCity> getAllCapitalCitiesInRegion(String region)
     {
+        /*
+        Retrieves all capital cities in a region where the region is entered by the user
+         */
         try
         {
             // Initializes a connection to the database
@@ -79,8 +89,13 @@ public class Cities {
         }
     }
 
-    public List<City> NPopulatedCitiesWithinRegion(int numberOfRows, String region) {
+    public List<City> NPopulatedCitiesWithinRegion(int numberOfRows, String region)
+    {
+        /*
+        Retrieves N most populous cities in a region where N is a number entered by the user and the region is entered by the user
+         */
         try {
+
             String strSelect = "SELECT ci.Name, ci.Population, ci.District, c.Code AS Country " +
                     "FROM city ci " +
                     "JOIN country c on ci.CountryCode = c.Code " +
@@ -105,6 +120,9 @@ public class Cities {
 
     public List<CapitalCity> getNPopulatedCapitalCitiesInRegion(Integer numberOfRows, String region)
     {
+        /*
+        Retrieves N most populous capital cities in a region where N is a number entered by the user and the region is entered by the user
+         */
         try
         {
             // Initializes a connection to the database
@@ -135,6 +153,9 @@ public class Cities {
 
     public List<CapitalCity> getNPopulatedCapitalCitiesInContinent(Integer numberOfRows, String continent)
     {
+        /*
+        Retrieves N most populous capital cities in a continent where N is a number entered by the user and the continent is entered by the user
+         */
         try
         {
             // Initializes a connection to the database
@@ -163,6 +184,9 @@ public class Cities {
         }
     }
 
+       /*
+        Serialises the SQL result into capital cities object
+         */
     public static List<CapitalCity> processCapitalCitiesResult(ResultSet rSet)
     {
         if (rSet == null)
@@ -198,7 +222,11 @@ public class Cities {
         }
     }
 
-    public List<City> getCitiesByDescPopulation() {
+    public List<City> getCitiesByDescPopulation()
+    {
+        /*
+        Retrieves all of the cities in the world in order from most to least populous
+         */
         try
         {
             // Initializes a connection to the database
@@ -221,7 +249,11 @@ public class Cities {
         }
     }
 
-    public List<City> getNPopulatedCities(int numberOfRows) {
+    public List<City> getNPopulatedCities(int numberOfRows)
+    {
+        /*
+        Retrieves N cities in the world in order from most to least populous where N is a number entered by the user
+         */
         try
         {
             // Initializes a connection to the database
@@ -247,7 +279,11 @@ public class Cities {
         }
     }
 
-    public List<City> getNPopulatedCitiesInContinent(int numberOfRows, String continent) {
+    public List<City> getNPopulatedCitiesInContinent(int numberOfRows, String continent)
+    {
+        /*
+        Retrieves N cities in a continent in order from most to least populous where N is a number entered by the user and the continent is entered by the user
+         */
         try
         {
             String strSelect =  "SELECT ci.Name, c.Name as Country, ci.District, ci.Population " +
@@ -274,7 +310,11 @@ public class Cities {
         }
     }
     
-        public List<City> getNPopulatedCitiesInCountry(int numberOfRows, String country) {
+        public List<City> getNPopulatedCitiesInCountry(int numberOfRows, String country)
+        {
+            /*
+        Retrieves N cities in a city in order from most to least populous where N is a number entered by the user and the country is entered by the user
+         */
         try
         {
             String strSelect =  "SELECT ci.Name, c.Name as Country, ci.District, ci.Population " +
@@ -301,7 +341,11 @@ public class Cities {
         }
     }
 
-    public List<City> getNPopulatedCitiesInDistrict(int numberOfRows, String district) {
+    public List<City> getNPopulatedCitiesInDistrict(int numberOfRows, String district)
+    {
+        /*
+        Retrieves N cities in a district in order from most to least populous where N is a number entered by the user and the district is entered by the user
+         */
         try
         {
             // Initializes a connection to the database
@@ -329,7 +373,11 @@ public class Cities {
         }
     }
 
-    public List<City> getAllCitiesInDistrict(String district) {
+    public List<City> getAllCitiesInDistrict(String district)
+    {
+        /*
+        Retrieves all cities in a district in order from most to least populous where the district is entered by the user
+         */
         try
         {
             // Initializes a connection to the database
@@ -354,7 +402,11 @@ public class Cities {
         }
     }
 
-    public List<City> getPopulationOfCity(String cityName) {
+    public List<City> getPopulationOfCity(String cityName)
+    {
+         /*
+        Retrieves the population of a city where the city is a number entered by the user
+         */
         try
         {            
                     String strSelect =  "SELECT ci.Name as Name, " +
@@ -379,7 +431,12 @@ public class Cities {
         }
     }
 
-    public List<City> getAllCitiesInRegionByDescPopulation(String region) {
+    public List<City> getAllCitiesInRegionByDescPopulation(String region)
+    {
+         /*
+        Retrieves all cities in a region in order from most to least populous where the region is entered by the user
+         */
+
         try
         {
             String strSelect =  "SELECT ci.Name, c.Name AS Country, ci.District, ci.Population " +
@@ -402,7 +459,11 @@ public class Cities {
         }
     }
 
-    public List<City> getAllCitiesInContinentByDescPopulation(String continent) {
+    public List<City> getAllCitiesInContinentByDescPopulation(String continent)
+    {
+         /*
+        Retrieves all cities in a continent in order from most to least populous where the continent entered by the user
+         */
         try
         {
             String strSelect =  "SELECT ci.Name, c.Name AS Country, ci.District, ci.Population " +
@@ -425,7 +486,11 @@ public class Cities {
         }
     }
 
-    public List<City> getAllCitiesInCountryByDescPopulation(String country) {
+    public List<City> getAllCitiesInCountryByDescPopulation(String country)
+    {
+         /*
+        Retrieves all cities in a country in order from most to least populous where the country is entered by the user
+         */
         try
         {
             String strSelect =  "SELECT ci.Name, c.Name AS Country, ci.District, ci.Population " +
