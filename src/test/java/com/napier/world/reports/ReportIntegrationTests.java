@@ -183,6 +183,13 @@ public class ReportIntegrationTests
     }
 
     @Test
+    void testgetAllCitiesInContinentByDescPopulation()
+    {
+        List<City> cities = new Cities (app.Conn).getAllCitiesInContinentByDescPopulation("Europe");
+        assertTrue(cities.size() > 0);
+    }
+
+    @Test
     void testGetNPopulatedCitiesInContinent()
     {
         List<City> cities = new Cities(app.Conn).getNPopulatedCitiesInContinent(5, "Asia");

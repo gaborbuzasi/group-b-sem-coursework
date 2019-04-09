@@ -403,9 +403,8 @@ public class Cities {
     }
 
     public List<City> getAllCitiesInContinentByDescPopulation(String continent) {
-        try
-        {
-            String strSelect =  "SELECT ci.Name, c.Name AS Country, ci.District, ci.Population " +
+        try {
+            String strSelect = "SELECT ci.Name, c.Name AS Country, ci.District, ci.Population " +
                     "FROM country c " +
                     "LEFT JOIN city ci on c.Code = ci.CountryCode " +
                     "WHERE c.Continent = ? " +
@@ -416,13 +415,33 @@ public class Cities {
             ResultSet rSet = stmt.executeQuery();
 
             return processResults(rSet);
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to retrieve city population details");
             return null;
         }
+    }
+        public List<City> getAllCapitalCitiesInContinentByDescPopulation(String continent) {
+            try
+            {
+                String strSelect =  "SELECT c.Capital, c.Name AS Country, ci.District, ci.Population " +
+                        "FROM country c " +
+                        "LEFT JOIN city ci on c.Code = ci.CountryCode " +
+                        "WHERE c.Continent = ? " +
+                        "ORDER BY ci.Population DESC ";
+
+                PreparedStatement stmt = Conn.conn.prepareStatement(strSelect);
+                stmt.setString(1, continent);
+                ResultSet rSet = stmt.executeQuery();
+
+                return processResults(rSet);
+            }
+            catch (Exception e)
+            {
+                System.out.println(e.getMessage());
+                System.out.println("Failed to retrieve city population details");
+                return null;
+            }
     }
 
     public List<City> getAllCitiesInCountryByDescPopulation(String country) {
