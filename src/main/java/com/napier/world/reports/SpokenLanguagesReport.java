@@ -10,6 +10,10 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+Contains reports for spokenLanguage type requirements
+*/
+
 public class SpokenLanguagesReport
 {
     Connection Conn;
@@ -21,6 +25,9 @@ public class SpokenLanguagesReport
 
     public List<SpokenLanguages> getCountriesByDescPopulation()
     {
+        /*
+        
+        */
         try
         {
             // Initializes a connection to the database
