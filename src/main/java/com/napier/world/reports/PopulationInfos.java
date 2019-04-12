@@ -13,6 +13,9 @@ import java.util.List;
 
 import static com.napier.world.reports.Population.processResults;
 
+/*
+Contains reports for populationInfo type requirements
+ */
 public class PopulationInfos
 {
     Connection Conn;
@@ -25,6 +28,9 @@ public class PopulationInfos
     {
         try
         {
+            /*
+            Calculates the population of the world
+            */
             String strSelect = "SELECT SUM(c.Population) AS Population " +
                                "FROM country c";
 
@@ -46,6 +52,9 @@ public class PopulationInfos
     {
         try
         {
+            /*
+            Calculates the population of a region where the region is entered by the user
+            */
             String strSelect = "SELECT SUM(c.Population) AS Population " +
                                "FROM country c " +
                                "WHERE c.Region = ?";
@@ -69,6 +78,9 @@ public class PopulationInfos
     {
         try
         {
+            /*
+            Retrieves the population of a country where the country is entered by the user
+            */
             String strSelect = "SELECT SUM(c.Population) AS Population " +
                     "FROM country c " +
                     "WHERE c.Name = ?";
@@ -92,6 +104,9 @@ public class PopulationInfos
     {
         try
         {
+            /*
+            Retrieves the population of a district where the district is entered by the user
+            */
             String strSelect = "SELECT SUM(c.Population) AS Population " +
                     "FROM city c " +
                     "WHERE c.District = ?";
@@ -115,6 +130,9 @@ public class PopulationInfos
     {
         try
         {
+            /*
+            Retrieves the population of a city where the city is entered by the user
+            */
             String strSelect = "SELECT SUM(c.Population) AS Population " +
                     "FROM city c " +
                     "WHERE c.Name = ?";
@@ -138,6 +156,9 @@ public class PopulationInfos
     {
         try
         {
+            /*
+            Calculates the population of a continent where the continent is entered by the user
+            */
             String strSelect = "SELECT SUM(c.Population) AS Population " +
                     "FROM country c " +
                     "WHERE c.Continent = ?";
@@ -156,7 +177,10 @@ public class PopulationInfos
             return null;
         }
     }
-
+    
+    /*
+     Serialises the SQL result into capital cities object
+     */
     public static PopulationInfo processResults(ResultSet rSet)
     {
         if (rSet == null)
