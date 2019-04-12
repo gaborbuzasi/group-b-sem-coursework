@@ -11,6 +11,10 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+Contains reports for countries type requirements
+ */
+
 public class Countries {
     Connection Conn;
 
@@ -18,7 +22,11 @@ public class Countries {
         Conn = conn;
     }
 
-    public List<Country> getCountriesByDescPopulation() {
+    public List<Country> getCountriesByDescPopulation()
+    {
+        /*
+        Retrieves all countries in order from most to least populous
+         */
         try {
             // Initializes a connection to the database
             Statement stmt = Conn.conn.createStatement();
@@ -40,7 +48,11 @@ public class Countries {
         }
     }
 
-    public List<Country> getNPopulatedCountries(int numberOfRows) {
+    public List<Country> getNPopulatedCountries(int numberOfRows)
+    {   
+        /*
+        Retrieves N most populous countries where N is a number entered by the user
+         */
         try {
             // Initializes a connection to the database
             String strSelect = "SELECT c.Code, c.Name, c.Continent, c.Region, c.Population, ci.Name AS Capital " +
@@ -63,7 +75,11 @@ public class Countries {
         }
     }
 
-    public List<Country> NPopulatedCountriesWithinRegion(int numberOfRows, String region) {
+    public List<Country> NPopulatedCountriesWithinRegion(int numberOfRows, String region)
+    {
+        /*
+        Retrieves N most populous countries within a region where N is a number entered by the user and the region is entered by the user
+         */
         try {
             String strSelect = "SELECT c.Name, c.Population, c.Region, c.Code, c.Continent, ci.Name AS Capital " +
                     "FROM country c " +
@@ -88,6 +104,9 @@ public class Countries {
     }
     public List<Country> getCountriesInRegion(String region)
     {
+        /*
+        Retrieves countries within a region in order from most to least populous where the region is entered by the user
+         */
         try
         {
             String strSelect = "SELECT c.Code, c.Name, c.Continent, c.Region, c.Population, ci.Name AS Capital " +
@@ -113,6 +132,9 @@ public class Countries {
 
     public List<Country> getAllCountriesInContinentByDescPopulation(String continent)
     {
+        /*
+        Retrieves all countries within a continent in order from most to least populous where the continent is entered by the user
+         */
         try
         {
             String strSelect = "SELECT c.Code, c.Name, c.Continent, c.Region, c.Population, ci.Name AS Capital " +
@@ -136,6 +158,9 @@ public class Countries {
         }
     }
     
+       /*
+        Serialises the SQL result into countries object
+         */
     public static List<Country> processResults(ResultSet rSet) {
         if (rSet == null) {
             System.out.println("No records to process");
