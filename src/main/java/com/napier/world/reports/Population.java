@@ -12,6 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
+/*
+Contains reports for population type requirements
+ */
+
 public class Population {
     Connection Conn;
 
@@ -24,6 +28,9 @@ public class Population {
     {
         try
         {
+          /*
+           Retrieves the population for each region in the world
+           */
             String strSelect = "select c.Region AS Name, " +
                     " SUM(c.Population) AS TotalPopulation, " +
                     " (CONCAT(CAST(ROUND((SELECT SUM(ci.Population) " +
@@ -57,6 +64,10 @@ public class Population {
     {
         try
         {
+         
+          /*
+           Retrieves the population for each country in the world
+           */   
             String strSelect = "select c.Name, " +
                     "       c.Population AS TotalPopulation, " +
                     "       CONCAT(CAST(ROUND(SUM(ci.Population) / c.Population * 100, 2) AS CHAR(10)), '%') AS LivingInCities, " +
@@ -84,6 +95,9 @@ public class Population {
     {
         try
         {
+          /*
+           Retrieves the population for each continent in the world
+           */
             String strSelect = "select c.Continent AS Name, " +
                     "SUM(c.Population) AS TotalPopulation, " +
                     "(CONCAT(CAST(ROUND((SELECT SUM(ci.Population) " +
@@ -113,7 +127,10 @@ public class Population {
             return null;
         }
     }
-
+    
+    /*
+        Serialises the SQL result into capital cities object
+         */
     public static List<com.napier.world.models.Population> processResults(ResultSet rSet)
     {
         if (rSet == null)
