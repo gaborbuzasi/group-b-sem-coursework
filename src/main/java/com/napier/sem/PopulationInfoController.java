@@ -1,14 +1,11 @@
 package com.napier.sem;
 
-import com.napier.world.models.Population;
 import com.napier.world.models.PopulationInfo;
 import com.napier.world.reports.PopulationInfos;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.List;
 
 @Controller
 @RequestMapping("/info")
@@ -22,7 +19,7 @@ public class PopulationInfoController {
 
         model.addAttribute("population", population);
         model.addAttribute("title", "Population information of world");
-        return "populationInfo";
+        return "populationinfo";
     }
 
     @RequestMapping("/population-of-continent")
@@ -32,8 +29,8 @@ public class PopulationInfoController {
         PopulationInfo population = new PopulationInfos(App.Conn).getPopulationOfAContinent(continent);
 
         model.addAttribute("population", population);
-        model.addAttribute("title", "Population information of continent" + continent);
-        return "populationInfo";
+        model.addAttribute("title", "Population information of continent " + continent);
+        return "populationinfo";
     }
 
     @RequestMapping("/population-of-region")
@@ -43,8 +40,8 @@ public class PopulationInfoController {
         PopulationInfo population = new PopulationInfos(App.Conn).getPopulationOfARegion(region);
 
         model.addAttribute("population", population);
-        model.addAttribute("title", "Population information of region" + region);
-        return "populationInfo";
+        model.addAttribute("title", "Population information of region " + region);
+        return "populationinfo";
     }
 
     @RequestMapping("/population-of-country")
@@ -54,8 +51,8 @@ public class PopulationInfoController {
         PopulationInfo population = new PopulationInfos(App.Conn).getPopulationOfACountry(country);
 
         model.addAttribute("population", population);
-        model.addAttribute("title", "Population information of country" + country);
-        return "populationInfo";
+        model.addAttribute("title", "Population information of country " + country);
+        return "populationinfo";
     }
 
     @RequestMapping("/population-of-district")
@@ -65,8 +62,8 @@ public class PopulationInfoController {
         PopulationInfo population = new PopulationInfos(App.Conn).getPopulationOfADistrict(district);
 
         model.addAttribute("population", population);
-        model.addAttribute("title", "Population information of district" + district);
-        return "populationInfo";
+        model.addAttribute("title", "Population information of district " + district);
+        return "populationinfo";
     }
 
     @RequestMapping("/population-of-city")
@@ -76,7 +73,7 @@ public class PopulationInfoController {
         PopulationInfo population = new PopulationInfos(App.Conn).getPopulationOfACity(city);
 
         model.addAttribute("population", population);
-        model.addAttribute("title", "Population information of city" + city);
-        return "populationInfo";
+        model.addAttribute("title", "Population information of city " + city);
+        return "populationinfo";
     }
 }
