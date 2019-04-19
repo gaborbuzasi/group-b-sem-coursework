@@ -14,6 +14,7 @@ import java.util.List;
 @RequestMapping("/population")
 public class PopulationController {
     @RequestMapping("/per-continent")
+    @NameAnnotation("The population of people, people living in cities, and people not living in cities in each continent")
     public String PopulationInContinent(Model model) {
 
         List<Population> population = new com.napier.world.reports.Population(App.Conn).getPopulationByContinent();
@@ -24,6 +25,7 @@ public class PopulationController {
     }
 
     @RequestMapping("/per-region")
+    @NameAnnotation("The population of people, people living in cities, and people not living in cities in each region")
     public String PopulationInRegion(Model model) {
 
         List<Population> population = new com.napier.world.reports.Population(App.Conn).getPopulationByRegion();
@@ -34,6 +36,7 @@ public class PopulationController {
     }
 
     @RequestMapping("/per-country")
+    @NameAnnotation("The population of people, people living in cities, and people not living in cities in each country")
     public String PopulationInCountry(Model model) {
 
         List<Population> population = new com.napier.world.reports.Population(App.Conn).getPopulationByCountries();

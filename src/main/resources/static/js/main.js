@@ -13,3 +13,10 @@ function CountriesInRegion() {
     var region = document.getElementById('txtCountriesInRegion').value;
     window.location.href = '/all-countries-in-region?region=' + region;
 }
+
+
+document.getElementById('idOfButton').addEventListener('onclick', function () {
+    var paramValue = document.getElementById('idOfInputField').value;
+    window.location.href = 'urlOfEndpoint?';
+
+})

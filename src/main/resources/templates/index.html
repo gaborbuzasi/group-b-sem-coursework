@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Report viewer</title>
@@ -9,85 +9,16 @@
     <header>
         <h2>Please choose from one of the following reports:</h2>
     </header>
-    <p>
-        <a href="/all-countries-in-world">All the countries in the world organised by largest population to smallest.</a>
-    </p>
-    <p>
-        All the countries in a continent organised by largest population to smallest.
-        <br/>Provide N: <input type="text" id="txtCountriesInContinent" /><button type="button" id="btnCountriesInContinent" onclick="CountriesInContinent()">Get</button>
-    </p>
-    <p>
-        All the countries in a region organised by largest population to smallest.
-        <br/>Provide N: <input type="text" id="txtCountriesInRegion" /><button type="button" id="btnCountriesInRegion" onclick="CountriesInRegion()">Get</button>
-    </p>
-    <p>
-        The top N populated countries in the world where N is provided by the user.
-        <br/>Provide N: <input type="text" id="txtTopCountries" /><button type="button" id="btnTopCountries" onclick="TopPopulatedCountries()">Get</button>
-    </p>
-    <p>
-        The top N populated countries in a continent where N is provided by the user.
-    </p>
-    <p>
-        The top N populated countries in a region where N is provided by the user.
-    </p>
-    <p>
-        All the cities in the world organised by largest population to smallest.
-    </p>
-    <p>
-        All the cities in a continent organised by largest population to smallest.
-    </p>
-    <p>
-        All the cities in a region organised by largest population to smallest.
-    </p>
-    <p>
-        All the cities in a country organised by largest population to smallest.
-    </p>
-    <p>
-        All the cities in a district organised by largest population to smallest.
-    </p>
-    <p>
-        The top N populated cities in the world where N is provided by the user.
-    </p>
-    <p>
-        The top N populated cities in a continent where N is provided by the user.
-    </p>
-    <p>
-        The top N populated cities in a region where N is provided by the user.
-    </p>
-    <p>
-        The top N populated cities in a country where N is provided by the user.
-    </p>
-    <p>
-        The top N populated cities in a district where N is provided by the user.
-    </p>
-    <p>
-        All the capital cities in the world organised by largest population to smallest.
-    </p>
-    <p>
-        All the capital cities in a continent organised by largest population to smallest.
-    </p>
-    <p>
-        All the capital cities in a region organised by largest to smallest.
-    </p>
-    <p>
-        The top N populated capital cities in the world where N is provided by the user.
-    </p>
-    <p>
-        The top N populated capital cities in a continent where N is provided by the user.
-    </p>
-    <p>
-        The top N populated capital cities in a region where N is provided by the user.
-    </p>
-    <p>
-        The population of people, people living in cities, and people not living in cities in each continent.
-    </p>
-    <p>
-        The population of people, people living in cities, and people not living in cities in each region.
-    </p>
-    <p>
-        The population of people, people living in cities, and people not living in cities in each country.
+    <p th:each="endpoint : ${endpoints}">
+        <a th:href="${endpoint.Url}" th:text="${endpoint.Name}"></a>
+        <input th:each="par : ${endpoint.Parameters}" type="text" th:id="${par.Id}" />
+        <button type="button" th:id="'btn' + ${#strings.replace(endpoint.Name, ' ', '')}" >View report</button>
     </p>
 
-    <script src="js/main.js"></script>
+    <div th:remove="tag" th:each="endpoint : ${endpoints}">
+        <script>
+            /*[[${endpoint.Javascript}]]*/
+        </script>
+    </div>
 </body>
 </html>

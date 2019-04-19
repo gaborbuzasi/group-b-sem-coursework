@@ -13,7 +13,9 @@ import java.util.List;
 @Controller
 @RequestMapping("/info")
 public class PopulationInfoController {
+
     @RequestMapping("/population-of-world")
+    @NameAnnotation("The population of the world")
     public String PopulationOfWorld(Model model) {
 
         PopulationInfo population = new PopulationInfos(App.Conn).getPopulationOfWorld();
@@ -24,6 +26,7 @@ public class PopulationInfoController {
     }
 
     @RequestMapping("/population-of-continent")
+    @NameAnnotation("The population of a continent")
     public String PopulationOfContinent(@RequestParam String continent, Model model) {
 
         PopulationInfo population = new PopulationInfos(App.Conn).getPopulationOfAContinent(continent);
@@ -34,6 +37,7 @@ public class PopulationInfoController {
     }
 
     @RequestMapping("/population-of-region")
+    @NameAnnotation("The population of a region")
     public String PopulationOfRegion(@RequestParam String region, Model model) {
 
         PopulationInfo population = new PopulationInfos(App.Conn).getPopulationOfARegion(region);
@@ -44,6 +48,7 @@ public class PopulationInfoController {
     }
 
     @RequestMapping("/population-of-country")
+    @NameAnnotation("The population of a country")
     public String PopulationOfCountry(@RequestParam String country, Model model) {
 
         PopulationInfo population = new PopulationInfos(App.Conn).getPopulationOfACountry(country);
@@ -54,6 +59,7 @@ public class PopulationInfoController {
     }
 
     @RequestMapping("/population-of-district")
+    @NameAnnotation("The population of a district")
     public String PopulationOfDistrict(@RequestParam String district, Model model) {
 
         PopulationInfo population = new PopulationInfos(App.Conn).getPopulationOfADistrict(district);
@@ -64,6 +70,7 @@ public class PopulationInfoController {
     }
 
     @RequestMapping("/population-of-city")
+    @NameAnnotation("The population of a city")
     public String PopulationOfCity(@RequestParam String city, Model model) {
 
         PopulationInfo population = new PopulationInfos(App.Conn).getPopulationOfACity(city);

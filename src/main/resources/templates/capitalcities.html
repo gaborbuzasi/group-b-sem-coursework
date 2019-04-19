@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}"></title>
+</head>
+<body>
+    <h2 th:text="${title}"></h2>
+    <table>
+        <thead>
+            <tr>
+                <td>Name</td>
+                <td>Country</td>
+                <td>Population</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="city : ${cities}">
+                <td th:text="${city.Name}"></td>
+                <td th:text="${city.Country}"></td>
+                <td th:text="${city.Population}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

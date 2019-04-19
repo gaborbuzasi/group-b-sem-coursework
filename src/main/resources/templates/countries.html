@@ -9,14 +9,22 @@
     <table>
         <thead>
             <tr>
+                <td>Code</td>
                 <td>Name</td>
+                <td>Continent</td>
+                <td>Region</td>
                 <td>Population</td>
+                <td>Capital</td>
             </tr>
         </thead>
         <tbody>
             <tr th:each="country : ${countries}">
+                <td th:text="${country.Code}"></td>
                 <td th:text="${country.Name}"></td>
+                <td th:text="${country.Continent}"></td>
+                <td th:text="${country.Region}"></td>
                 <td th:text="${country.Population}"></td>
+                <td th:text="${country.Capital}"></td>
             </tr>
         </tbody>
     </table>

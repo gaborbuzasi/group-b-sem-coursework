@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}"></title>
+</head>
+<body>
+    <h2 th:text="${title}"></h2>
+    <table>
+        <thead>
+            <tr>
+                <td>Name</td>
+                <td>Total population</td>
+                <td>% living in cities</td>
+                <td>% not living in cities</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="pop : ${population}">
+                <td th:text="${pop.Name}"></td>
+                <td th:text="${pop.TotalPopulation}"></td>
+                <td th:text="${pop.LivingInCities}"></td>
+                <td th:text="${pop.NotLivingInCities}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

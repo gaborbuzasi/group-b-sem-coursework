@@ -1,30 +1,106 @@
 package com.napier.sem;
 
-import com.napier.world.models.Country;
-import com.napier.world.reports.Countries;
-import org.springframework.beans.factory.ListableBeanFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.BeanDefinition;
+import org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider;
+import org.springframework.core.type.filter.AnnotationTypeFilter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.lang.reflect.Method;
+import java.lang.reflect.Parameter;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 @RequestMapping("/")
 public class HomeController {
 
-    @Autowired
-    private ListableBeanFactory listableBeanFactory;
-
     @RequestMapping("/")
     public String Index(Model model)
     {
-        Map<String, Object> controllers;
-        controllers = listableBeanFactory.getBeansWithAnnotation(Controller.class);
+        List<String> controllerNames = new ArrayList<>();
 
+        List<ReportEndpoint> endpoints = new ArrayList<>();
+
+        ClassPathScanningCandidateComponentProvider scanner = new ClassPathScanningCandidateComponentProvider(false);
+        scanner.addIncludeFilter(new AnnotationTypeFilter(Controller.class));
+
+        for (BeanDefinition bf : scanner.findCandidateComponents("com.napier.sem"))
+        {
+            String className = bf.getBeanClassName();
+
+            // We don't want to generate endpoint data for home controller
+            if (!className.contains("HomeController"))
+            {
+                controllerNames.add(className);
+            }
+        }
+
+        for (String controllerName : controllerNames)
+        {
+            try
+            {
+                Object controller = HomeController.class.getClassLoader().loadClass(controllerName);
+                String baseControllerUrl = ((RequestMapping)((Class) controller).getAnnotation(RequestMapping.class)).value()[0];
+
+                for (Method m : HomeController.class.getClassLoader()
+                                                .loadClass(controllerName)
+                                                .getDeclaredMethods())
+                {
+                    ReportEndpoint re = new ReportEndpoint();
+
+                    String endpointUrl = baseControllerUrl + m.getAnnotation(RequestMapping.class).value()[0];
+                    String endpointName = m.getAnnotation(NameAnnotation.class).value();
+
+                    Parameter[] params = m.getParameters();
+                    for (Parameter p : params)
+                    {
+                        if (p.getAnnotation(RequestParam.class) != null)
+                        {
+                            ParameterModel pm = new ParameterModel();
+                            pm.Name = p.getName();
+                            pm.Id = endpointName.replace(" ", "") + pm.Name;
+
+                            re.Parameters.add(pm);
+                        }
+                    }
+
+                    re.Name = endpointName;
+                    re.Url = endpointUrl;
+
+                    if (re.Parameters.size() > 0)
+                    {
+                        re.Javascript = "document.getElementById('btn" + re.Name.replace(" ", "") + "').addEventListener('onclick', function () {\n";
+
+                        for (ParameterModel param : re.Parameters)
+                        {
+                            re.Javascript += "    var " + param.Id + "Value = document.getElementById('" + param.Id + "').value;\n";
+                        }
+
+                        re.Javascript += "    window.location.href = '" + re.Url + "?";
+
+                        for (ParameterModel param : re.Parameters)
+                        {
+                            re.Javascript += param.Name + "=" + "' + " + param.Id + "Value + '&";
+                        }
+
+                        re.Javascript += "';\n" +
+                                         "    \n" +
+                                         "})";
+                    }
+
+                    endpoints.add(re);
+                }
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+        }
+
+        model.addAttribute("endpoints", endpoints);
 
         return "index";
     }
