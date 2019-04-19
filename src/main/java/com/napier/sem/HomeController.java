@@ -70,26 +70,38 @@ public class HomeController {
                     re.Name = endpointName;
                     re.Url = endpointUrl;
 
-                    if (re.Parameters.size() > 0)
+                    StringBuilder sb = new StringBuilder();
+                    sb.append("document.getElementById('btn" + re.Name.replace(" ", "") + "').addEventListener('click', function () { ");
+
+                    for (ParameterModel param : re.Parameters)
                     {
-                        re.Javascript = "document.getElementById('btn" + re.Name.replace(" ", "") + "').addEventListener('onclick', function () {\n";
-
-                        for (ParameterModel param : re.Parameters)
-                        {
-                            re.Javascript += "    var " + param.Id + "Value = document.getElementById('" + param.Id + "').value;\n";
-                        }
-
-                        re.Javascript += "    window.location.href = '" + re.Url + "?";
-
-                        for (ParameterModel param : re.Parameters)
-                        {
-                            re.Javascript += param.Name + "=" + "' + " + param.Id + "Value + '&";
-                        }
-
-                        re.Javascript += "';\n" +
-                                         "    \n" +
-                                         "})";
+                        sb.append("var " + param.Id + "Value = document.getElementById('" + param.Id + "').value; ");
                     }
+
+                    sb.append("window.location.href = '" + re.Url);
+
+                    if (!re.Parameters.isEmpty())
+                    {
+                        sb.append("?");
+                    }
+                    else
+                    {
+                        sb.append("'");
+                    }
+
+                    for (ParameterModel param : re.Parameters)
+                    {
+                        sb.append(param.Name + "=" + "' + " + param.Id + "Value");
+
+                        if (re.Parameters.indexOf(param) < re.Parameters.size() - 1)
+                        {
+                            sb.append(" + '&");
+                        }
+                    }
+
+                    sb.append("; });");
+
+                    re.Javascript = sb.toString();
 
                     endpoints.add(re);
                 }
@@ -100,6 +112,15 @@ public class HomeController {
             }
         }
 
+        StringBuilder allJavascriptCode = new StringBuilder();
+
+        for (ReportEndpoint re : endpoints)
+        {
+            if (re.Javascript != null)
+                allJavascriptCode.append(re.Javascript);
+        }
+
+        model.addAttribute("javascript", allJavascriptCode.toString());
         model.addAttribute("endpoints", endpoints);
 
         return "index";

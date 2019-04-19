@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <title>Report viewer</title>
     <link href="css/styles.css" rel="stylesheet" />
+    <script th:inline="javascript">
+        var prepareButtons = function () {
+            [(${javascript})]
+        };
+    </script>
+    <script>
+        window.onload = function () {
+            prepareButtons();
+        }
+    </script>
 </head>
 <body>
     <header>
@@ -14,11 +24,5 @@
         <input th:each="par : ${endpoint.Parameters}" type="text" th:id="${par.Id}" />
         <button type="button" th:id="'btn' + ${#strings.replace(endpoint.Name, ' ', '')}" >View report</button>
     </p>
-
-    <div th:remove="tag" th:each="endpoint : ${endpoints}">
-        <script>
-            /*[[${endpoint.Javascript}]]*/
-        </script>
-    </div>
 </body>
 </html>
