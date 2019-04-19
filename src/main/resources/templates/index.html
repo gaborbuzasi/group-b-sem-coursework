@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>Report viewer</title>
     <link href="css/styles.css" rel="stylesheet" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
     <script th:inline="javascript">
         var prepareButtons = function () {
             [(${javascript})]
@@ -16,13 +18,33 @@
     </script>
 </head>
 <body>
-    <header>
-        <h2>Please choose from one of the following reports:</h2>
-    </header>
-    <p th:each="endpoint : ${endpoints}">
-        <a th:href="${endpoint.Url}" th:text="${endpoint.Name}"></a>
-        <input th:each="par : ${endpoint.Parameters}" type="text" th:id="${par.Id}" />
-        <button type="button" th:id="'btn' + ${#strings.replace(endpoint.Name, ' ', '')}" >View report</button>
-    </p>
+<div class="container">
+    <div class="mx-auto">
+        <header>
+            <h3>Group B - reporting system</h3>
+        </header>
+    </div>
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Report name</th>
+                    <th scope="col" colspan="2">Parameters</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="endpoint : ${endpoints}">
+                    <th scope="row" th:text="${endpoint.Name}" th:colspan="${3 - endpoint.Parameters.size()}"></th>
+                    <td th:each="par : ${endpoint.Parameters}">
+                        <input type="text" th:id="${par.Id}" th:placeholder="${par.Name}" />
+                    </td>
+                    <td><button type="button" class="btn btn-primary" th:id="'btn' + ${#strings.replace(endpoint.Name, ' ', '')}" >View report</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 </body>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </html>

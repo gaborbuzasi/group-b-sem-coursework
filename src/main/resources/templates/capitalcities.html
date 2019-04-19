@@ -3,24 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title th:text="${title}"></title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-    <h2 th:text="${title}"></h2>
-    <table>
-        <thead>
-            <tr>
-                <td>Name</td>
-                <td>Country</td>
-                <td>Population</td>
-            </tr>
-        </thead>
-        <tbody>
+<div class="container">
+    <div class="row">
+        <h2><a href="/">Back to all reports</a></h2>
+        <h2 th:text="' - ' + ${title}"></h2>
+    </div>
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Country</th>
+                    <th>Population</th>
+                </tr>
+            </thead>
+            <tbody>
             <tr th:each="city : ${cities}">
                 <td th:text="${city.Name}"></td>
                 <td th:text="${city.Country}"></td>
                 <td th:text="${city.Population}"></td>
             </tr>
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
+</div>
 </body>
 </html>

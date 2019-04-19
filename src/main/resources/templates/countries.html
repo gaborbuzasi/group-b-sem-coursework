@@ -3,21 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title th:text="${title}"></title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-    <h2 th:text="${title}"></h2>
-    <table>
-        <thead>
-            <tr>
-                <td>Code</td>
-                <td>Name</td>
-                <td>Continent</td>
-                <td>Region</td>
-                <td>Population</td>
-                <td>Capital</td>
-            </tr>
-        </thead>
-        <tbody>
+<div class="container">
+    <div class="row">
+        <h2><a href="/">Back to all reports</a></h2>
+        <h2 th:text="' - ' + ${title}"></h2>
+    </div>
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Code</th>
+                    <th>Name</th>
+                    <th>Continent</th>
+                    <th>Region</th>
+                    <th>Population</th>
+                    <th>Capital</th>
+                </tr>
+            </thead>
+            <tbody>
             <tr th:each="country : ${countries}">
                 <td th:text="${country.Code}"></td>
                 <td th:text="${country.Name}"></td>
@@ -26,7 +32,9 @@
                 <td th:text="${country.Population}"></td>
                 <td th:text="${country.Capital}"></td>
             </tr>
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
+</div>
 </body>
 </html>
