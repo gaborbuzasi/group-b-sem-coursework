@@ -6,7 +6,6 @@ import com.napier.world.models.Population;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import javax.validation.constraints.AssertTrue;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -38,21 +37,21 @@ public class ReportIntegrationTests
     @Test
     void testGetCountriesByDescendingPopulation()
     {
-        List<Country> result = new Countries(app.Conn).getCountriesByDescPopulation();
+        List<Country> result = new Countries(app.Conn).getAllCountriesInWorldByDescPopulation();
         assertTrue(result.size() > 0);
     }
 
     @Test
     void testGetNPopulatedCountries()
     {
-        List<Country> result = new Countries(app.Conn).getNPopulatedCountries(5);
+        List<Country> result = new Countries(app.Conn).getNPopulatedCountriesInWorldByDescPopulation(5);
         assertTrue(result.size() == 5);
     }
 
     @Test
     void testGetCountriesInRegion()
     {
-        List<Country> result = new Countries(app.Conn).getCountriesInRegion("Central Africa");
+        List<Country> result = new Countries(app.Conn).getAllCountriesInRegionByDescPopulation("Central Africa");
         assertTrue(result.size() > 0);
     }
 
@@ -66,7 +65,7 @@ public class ReportIntegrationTests
     @Test
     void testNPopulatedCountriesWithinRegion()
     {
-        List<Country> result = new Countries(app.Conn).NPopulatedCountriesWithinRegion(5, "Central Africa");
+        List<Country> result = new Countries(app.Conn).getNPopulatedCountriesInRegionByDescPopulation(5, "Central Africa");
         assertTrue(result.size() > 0);
     }
 
