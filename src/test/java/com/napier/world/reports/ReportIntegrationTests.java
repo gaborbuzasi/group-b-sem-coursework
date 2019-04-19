@@ -30,8 +30,8 @@ public class ReportIntegrationTests
     @Test
     void testGetPopulationOfCity()
     {
-        List<City> result = new Cities(app.Conn).getPopulationOfCity("Edinburgh");
-        assertTrue(result.size() > 0);
+        PopulationInfo result = new com.napier.world.reports.PopulationInfos(app.Conn).getPopulationOfACity("Edinburgh");
+        assertNotNull(result);
     }
 
     @Test
