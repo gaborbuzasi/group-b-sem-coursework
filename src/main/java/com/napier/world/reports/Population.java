@@ -2,6 +2,7 @@ package com.napier.world.reports;
 
 import com.mysql.cj.protocol.Resultset;
 import com.napier.world.connection.Connection;
+import com.napier.world.models.City;
 import com.napier.world.models.Country;
 
 import java.sql.PreparedStatement;

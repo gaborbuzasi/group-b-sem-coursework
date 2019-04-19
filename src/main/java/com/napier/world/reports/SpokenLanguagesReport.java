@@ -19,7 +19,7 @@ public class SpokenLanguagesReport
         Conn = conn;
     }
 
-    public List<SpokenLanguages> getCountriesByDescPopulation()
+    public List<SpokenLanguages> getLanguagesSpoken()
     {
         try
         {
