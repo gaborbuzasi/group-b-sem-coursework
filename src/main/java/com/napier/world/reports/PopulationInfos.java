@@ -1,17 +1,12 @@
 package com.napier.world.reports;
 
 import com.napier.world.connection.Connection;
-import com.napier.world.models.Population;
 import com.napier.world.models.PopulationInfo;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
-
-import static com.napier.world.reports.Population.processResults;
 
 public class PopulationInfos
 {

@@ -72,7 +72,7 @@ public class ReportIntegrationTests
     @Test
     void testNPopulatedCitiesWithinRegion()
     {
-        List<City> result = new Cities(app.Conn).NPopulatedCitiesWithinRegion(5, "Central Africa");
+        List<City> result = new Cities(app.Conn).getNPopulatedCitiesWithinRegionByDescPopulation(5, "Central Africa");
         assertTrue(result.size() > 0);
     }
 
@@ -142,35 +142,35 @@ public class ReportIntegrationTests
     @Test
     void testGetAllOrNCapitalCitiesReturnsFive()
     {
-        List<CapitalCity> capitals = new Cities(app.Conn).getAllOrNCapitalCities(5);
+        List<CapitalCity> capitals = new Cities(app.Conn).getAllOrNCapitalCitiesInWorldByDescPopulation(5);
         assertTrue(capitals.size() == 5);
     }
 
     @Test
     void testGetAllOrNCapitalCitiesReturnsAll()
     {
-        List<CapitalCity> capitals = new Cities(app.Conn).getAllOrNCapitalCities(null);
+        List<CapitalCity> capitals = new Cities(app.Conn).getAllOrNCapitalCitiesInWorldByDescPopulation(null);
         assertTrue(capitals.size() > 0);
     }
 
     @Test
     void testGetAllCapitalCitiesInRegion()
     {
-        List<CapitalCity> capitals = new Cities(app.Conn).getAllCapitalCitiesInRegion("Central Africa");
+        List<CapitalCity> capitals = new Cities(app.Conn).getAllCapitalCitiesInRegionByDescPopulation("Central Africa");
         assertTrue(capitals.size() > 0);
     }
 
     @Test
     void testGetCitiesByDescPopulation()
     {
-        List<City> cities = new Cities(app.Conn).getCitiesByDescPopulation();
+        List<City> cities = new Cities(app.Conn).getAllCitiesInWorldByDescPopulation();
         assertTrue(cities.size() > 0);
     }
 
     @Test
     void testGetNPopulatedCities()
     {
-        List<City> cities = new Cities(app.Conn).getNPopulatedCities(5);
+        List<City> cities = new Cities(app.Conn).getNPopulatedCitiesInWorldByDescPopulation(5);
         assertTrue(cities.size() == 5);
     }
 
@@ -184,21 +184,21 @@ public class ReportIntegrationTests
     @Test
     void testGetNPopulatedCitiesInContinent()
     {
-        List<City> cities = new Cities(app.Conn).getNPopulatedCitiesInContinent(5, "Asia");
+        List<City> cities = new Cities(app.Conn).getNPopulatedCitiesInContinentByDescPopulation(5, "Asia");
         assertTrue(cities.size() == 5);
     }
 
     @Test
     void testGetNPopulatedCapitalCitiesInRegion()
     {
-        List<CapitalCity> cities = new Cities(app.Conn).getNPopulatedCapitalCitiesInRegion(5, "Central Africa");
+        List<CapitalCity> cities = new Cities(app.Conn).getNPopulatedCapitalCitiesInRegionByDescPopulation(5, "Central Africa");
         assertTrue(cities.size() == 5);
     }
 
     @Test
     void testGetNPopulatedCapitalCitiesInContinent()
     {
-        List<CapitalCity> cities = new Cities(app.Conn).getNPopulatedCapitalCitiesInContinent(5, "Asia");
+        List<CapitalCity> cities = new Cities(app.Conn).getNPopulatedCapitalCitiesInContinentByDescPopulation(5, "Asia");
         assertTrue(cities.size() == 5);
     }
 
@@ -219,21 +219,21 @@ public class ReportIntegrationTests
     @Test
     void testGetNPopulatedCitiesInDistrict()
     {
-        List<City> cities = new Cities(app.Conn).getNPopulatedCitiesInDistrict(10, "Herat");
+        List<City> cities = new Cities(app.Conn).getNPopulatedCitiesInDistrictByDescPopulation(10, "Herat");
         assertTrue(cities.size() > 0);
     }
 
     @Test
     void testGetAllCitiesInDistrict()
     {
-        List<City> cities = new Cities(app.Conn).getAllCitiesInDistrict("Herat");
+        List<City> cities = new Cities(app.Conn).getAllCitiesInDistrictByDescPopulation("Herat");
         assertTrue(cities.size() > 0);
     }
 
     @Test
     void testGetNPopulatedCitiesInCountry()
     {
-        List<City> cities = new Cities(app.Conn).getNPopulatedCitiesInCountry(10, "Hungary");
+        List<City> cities = new Cities(app.Conn).getNPopulatedCitiesInCountryByDescPopulation(10, "Hungary");
         assertTrue(cities.size() > 0);
     }
 }
