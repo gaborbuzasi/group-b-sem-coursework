@@ -10,6 +10,9 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Class containing all integration tests for our application
+ */
 public class ReportIntegrationTests
 {
     static App app;

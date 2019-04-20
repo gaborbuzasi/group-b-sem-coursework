@@ -1,5 +1,8 @@
 package com.napier.world.models;
 
+/**
+ * Creating capital city model and attributes to use in reports
+ */
 public class CapitalCity {
 
     public String Name;
@@ -7,7 +10,4 @@ public class CapitalCity {
     public String Country;
 
     public int Population;
-
-    public static void add(CapitalCity cc) {
-    }
 }
