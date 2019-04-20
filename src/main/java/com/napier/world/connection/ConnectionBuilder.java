@@ -1,5 +1,8 @@
 package com.napier.world.connection;
 
+/**
+ * Custom connection factory that accepts a location (URL) of database
+ */
 public class ConnectionBuilder
 {
     private String _location = "db";

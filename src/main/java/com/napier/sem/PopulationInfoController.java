@@ -7,6 +7,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+/**
+ * Class responsible for loading data for reports of populationInfo type
+ * and passing the loaded data to the view
+ */
 @Controller
 @RequestMapping("/info")
 public class PopulationInfoController {

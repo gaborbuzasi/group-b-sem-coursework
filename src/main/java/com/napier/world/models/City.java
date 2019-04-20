@@ -1,5 +1,8 @@
 package com.napier.world.models;
 
+/**
+ * Creating city model and attributes to use in reports
+ */
 public class City {
     /**
      * City Code
@@ -19,7 +22,6 @@ public class City {
     /**
      *  City District
      */
-
     public String District;
 
     /**

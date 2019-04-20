@@ -3,6 +3,9 @@ package com.napier.world.connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+/**
+ * Handles and exposes the SQL connection to the rest of the application
+ */
 public class Connection {
 
     public java.sql.Connection conn;

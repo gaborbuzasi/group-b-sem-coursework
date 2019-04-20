@@ -1,7 +1,7 @@
 package com.napier.world.models;
 
 /**
- * Model for the report of spoken languages in each country
+ * Creating spoken language model and attributes to use in reports
  */
 public class SpokenLanguages {
     public String Language;

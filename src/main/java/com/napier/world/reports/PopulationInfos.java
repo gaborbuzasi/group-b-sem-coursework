@@ -8,9 +8,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+/**
+ * Contains reports for Population type information requirements
+ */
 public class PopulationInfos
 {
     Connection Conn;
+    /**
+     * Initializes class with a connection to the database passed as argument
+     * @param conn Connection to database to run queries against
+     */
     public PopulationInfos(Connection conn)
     {
         Conn = conn;
@@ -152,6 +159,11 @@ public class PopulationInfos
         }
     }
 
+    /**
+     * Serializes dynamic result set returned from SQL to PopulationInfo object
+     * @param rSet Result set returned from the database
+     * @return PopulationInfo object
+     */
     public static PopulationInfo processResults(ResultSet rSet)
     {
         if (rSet == null)

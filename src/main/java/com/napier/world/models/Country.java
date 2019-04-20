@@ -1,7 +1,7 @@
 package com.napier.world.models;
 
 /**
- * Represents a Country
+ * Creating city model and attributes to use in reports
  */
 public class Country {
 
@@ -24,11 +24,6 @@ public class Country {
      * Region of a country
      */
     public String Region;
-
-    /**
-     * Surface area of country
-     */
-    public float SurfaceArea;
 
     /**
      * Population of country
