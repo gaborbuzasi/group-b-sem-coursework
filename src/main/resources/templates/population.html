@@ -14,27 +14,25 @@
     <div class="row">
         <table class="table table-striped">
             <thead>
-                <tr>
-                    <th>Code</th>
-                    <th>Name</th>
-                    <th>Continent</th>
-                    <th>Region</th>
-                    <th>Population</th>
-                    <th>Capital</th>
-                </tr>
+            <tr>
+                <th>Name</th>
+                <th>Total population</th>
+                <th>% living in cities</th>
+                <th>% not living in cities</th>
+            </tr>
             </thead>
             <tbody>
-            <tr th:each="country : ${countries}">
-                <td th:text="${country.Code}"></td>
-                <td th:text="${country.Name}"></td>
-                <td th:text="${country.Continent}"></td>
-                <td th:text="${country.Region}"></td>
-                <td th:text="${country.Population}"></td>
-                <td th:text="${country.Capital}"></td>
+            <tr th:each="pop : ${population}">
+                <td th:text="${pop.Name}"></td>
+                <td th:text="${pop.TotalPopulation}"></td>
+                <td th:text="${pop.LivingInCities}"></td>
+                <td th:text="${pop.NotLivingInCities}"></td>
             </tr>
             </tbody>
         </table>
     </div>
 </div>
+
+
 </body>
 </html>

@@ -1,21 +1,23 @@
 package com.napier.world.reports;
 
 import com.napier.world.connection.Connection;
-import com.napier.world.models.Population;
 import com.napier.world.models.PopulationInfo;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 
-import static com.napier.world.reports.Population.processResults;
-
+/**
+ * Contains reports for Population type information requirements
+ */
 public class PopulationInfos
 {
     Connection Conn;
+    /**
+     * Initializes class with a connection to the database passed as argument
+     * @param conn Connection to database to run queries against
+     */
     public PopulationInfos(Connection conn)
     {
         Conn = conn;
@@ -157,6 +159,11 @@ public class PopulationInfos
         }
     }
 
+    /**
+     * Serializes dynamic result set returned from SQL to PopulationInfo object
+     * @param rSet Result set returned from the database
+     * @return PopulationInfo object
+     */
     public static PopulationInfo processResults(ResultSet rSet)
     {
         if (rSet == null)

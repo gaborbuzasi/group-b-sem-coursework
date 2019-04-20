@@ -15,26 +15,23 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>Code</th>
                     <th>Name</th>
-                    <th>Continent</th>
-                    <th>Region</th>
+                    <th>Country</th>
+                    <th>District</th>
                     <th>Population</th>
-                    <th>Capital</th>
                 </tr>
             </thead>
             <tbody>
-            <tr th:each="country : ${countries}">
-                <td th:text="${country.Code}"></td>
-                <td th:text="${country.Name}"></td>
-                <td th:text="${country.Continent}"></td>
-                <td th:text="${country.Region}"></td>
-                <td th:text="${country.Population}"></td>
-                <td th:text="${country.Capital}"></td>
+            <tr th:each="city : ${cities}">
+                <td th:text="${city.Name}"></td>
+                <td th:text="${city.Country}"></td>
+                <td th:text="${city.District}"></td>
+                <td th:text="${city.Population}"></td>
             </tr>
             </tbody>
         </table>
     </div>
 </div>
+
 </body>
 </html>

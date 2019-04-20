@@ -1,7 +1,5 @@
 package com.napier.world.reports;
 
-//Contains all integration tests for reports
-
 import com.napier.sem.App;
 import com.napier.world.models.*;
 import com.napier.world.models.Population;
@@ -13,8 +11,9 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-//imports static methods of a class; in this case Assertions
-
+/**
+ * Class containing all integration tests for our application
+ */
 public class ReportIntegrationTests
 {
     static App app;
@@ -37,28 +36,28 @@ public class ReportIntegrationTests
     @Test
     void testGetPopulationOfCity()
     {
-        List<City> result = new Cities(app.Conn).getPopulationOfCity("Edinburgh");
-        assertTrue(result.size() > 0);
+        PopulationInfo result = new com.napier.world.reports.PopulationInfos(app.Conn).getPopulationOfACity("Edinburgh");
+        assertNotNull(result);
     }
     // Tests GetCountriesByDescendingPopulation returns more than zero elements
     @Test
     void testGetCountriesByDescendingPopulation()
     {
-        List<Country> result = new Countries(app.Conn).getCountriesByDescPopulation();
+        List<Country> result = new Countries(app.Conn).getAllCountriesInWorldByDescPopulation();
         assertTrue(result.size() > 0);
     }
     // Tests GetNPopulatedCountries report returns more than zero elements
     @Test
     void testGetNPopulatedCountries()
     {
-        List<Country> result = new Countries(app.Conn).getNPopulatedCountries(5);
+        List<Country> result = new Countries(app.Conn).getNPopulatedCountriesInWorldByDescPopulation(5);
         assertTrue(result.size() == 5);
     }
     // Tests GGetCountriesInRegion report returns more than zero elements
     @Test
     void testGetCountriesInRegion()
     {
-        List<Country> result = new Countries(app.Conn).getCountriesInRegion("Central Africa");
+        List<Country> result = new Countries(app.Conn).getAllCountriesInRegionByDescPopulation("Central Africa");
         assertTrue(result.size() > 0);
     }
     // Tests GetAllCountriesInContinentByDescPopulation report returns more than zero elements
@@ -72,14 +71,14 @@ public class ReportIntegrationTests
     @Test
     void testNPopulatedCountriesWithinRegion()
     {
-        List<Country> result = new Countries(app.Conn).NPopulatedCountriesWithinRegion(5, "Central Africa");
+        List<Country> result = new Countries(app.Conn).getNPopulatedCountriesInRegionByDescPopulation(5, "Central Africa");
         assertTrue(result.size() > 0);
     }
     // Tests NPopulatedCitiesWithinRegion report returns more than zero elements
     @Test
     void testNPopulatedCitiesWithinRegion()
     {
-        List<City> result = new Cities(app.Conn).NPopulatedCitiesWithinRegion(5, "Central Africa");
+        List<City> result = new Cities(app.Conn).getNPopulatedCitiesWithinRegionByDescPopulation(5, "Central Africa");
         assertTrue(result.size() > 0);
     }
     // Tests GetPopulationByRegion report returns more than zero elements
@@ -149,28 +148,35 @@ public class ReportIntegrationTests
     @Test
     void testGetAllOrNCapitalCitiesReturnsFive()
     {
-        List<CapitalCity> capitals = new Cities(app.Conn).getAllOrNCapitalCities(5);
+        List<CapitalCity> capitals = new Cities(app.Conn).getAllOrNCapitalCitiesInWorldByDescPopulation(5);
         assertTrue(capitals.size() == 5);
     }
     // Tests GGetAllOrNCapitalCitiesReturnsAll report returns more than zero elements
     @Test
     void testGetAllOrNCapitalCitiesReturnsAll()
     {
-        List<CapitalCity> capitals = new Cities(app.Conn).getAllOrNCapitalCities(null);
+        List<CapitalCity> capitals = new Cities(app.Conn).getAllOrNCapitalCitiesInWorldByDescPopulation(null);
+        assertTrue(capitals.size() > 0);
+    }
+
+    @Test
+    void testGetAllCapitalCitiesInRegion()
+    {
+        List<CapitalCity> capitals = new Cities(app.Conn).getAllCapitalCitiesInRegionByDescPopulation("Central Africa");
         assertTrue(capitals.size() > 0);
     }
     // Tests GetCitiesByDescPopulation report returns more than zero elements
     @Test
     void testGetCitiesByDescPopulation()
     {
-        List<City> cities = new Cities(app.Conn).getCitiesByDescPopulation();
+        List<City> cities = new Cities(app.Conn).getAllCitiesInWorldByDescPopulation();
         assertTrue(cities.size() > 0);
     }
     // Tests GetNPopulatedCities report returns more than zero elements
     @Test
     void testGetNPopulatedCities()
     {
-        List<City> cities = new Cities(app.Conn).getNPopulatedCities(5);
+        List<City> cities = new Cities(app.Conn).getNPopulatedCitiesInWorldByDescPopulation(5);
         assertTrue(cities.size() == 5);
     }
     // Tests GetAllCitiesInRegionByDescPopulation report returns more than zero elements
@@ -180,18 +186,33 @@ public class ReportIntegrationTests
         List<City> cities = new Cities(app.Conn).getAllCitiesInRegionByDescPopulation("Central Africa");
         assertTrue(cities.size() > 0);
     }
+
+    @Test
+    void testgetAllCitiesInContinentByDescPopulation()
+    {
+        List<City> cities = new Cities (app.Conn).getAllCitiesInContinentByDescPopulation("Europe");
+        assertTrue(cities.size() > 0);
+    }
+
     // Tests GetNPopulatedCitiesInContinent report returns more than zero elements
     @Test
     void testGetNPopulatedCitiesInContinent()
     {
-        List<City> cities = new Cities(app.Conn).getNPopulatedCitiesInContinent(5, "Asia");
+        List<City> cities = new Cities(app.Conn).getNPopulatedCitiesInContinentByDescPopulation(5, "Asia");
         assertTrue(cities.size() == 5);
     }
     // Tests GetNPopulatedCapitalCitiesInRegion report returns more than zero elements
     @Test
     void testGetNPopulatedCapitalCitiesInRegion()
     {
-        List<CapitalCity> cities = new Cities(app.Conn).getNPopulatedCapitalCitiesInRegion(5, "Central Africa");
+        List<CapitalCity> cities = new Cities(app.Conn).getNPopulatedCapitalCitiesInRegionByDescPopulation(5, "Central Africa");
+        assertTrue(cities.size() == 5);
+    }
+
+    @Test
+    void testGetNPopulatedCapitalCitiesInContinent()
+    {
+        List<CapitalCity> cities = new Cities(app.Conn).getNPopulatedCapitalCitiesInContinentByDescPopulation(5, "Asia");
         assertTrue(cities.size() == 5);
     }
     // Tests GetAllCitiesInContinentByDescPopulation report returns more than zero elements
@@ -212,14 +233,21 @@ public class ReportIntegrationTests
     @Test
     void testGetNPopulatedCitiesInDistrict()
     {
-        List<City> cities = new Cities(app.Conn).getNPopulatedCitiesInDistrict(10, "Herat");
+        List<City> cities = new Cities(app.Conn).getNPopulatedCitiesInDistrictByDescPopulation(10, "Herat");
+        assertTrue(cities.size() > 0);
+    }
+
+    @Test
+    void testGetAllCitiesInDistrict()
+    {
+        List<City> cities = new Cities(app.Conn).getAllCitiesInDistrictByDescPopulation("Herat");
         assertTrue(cities.size() > 0);
     }
     // Tests GetNPopulatedCitiesInCountry report returns more than zero elements
     @Test
     void testGetNPopulatedCitiesInCountry()
     {
-        List<City> cities = new Cities(app.Conn).getNPopulatedCitiesInCountry(10, "Hungary");
+        List<City> cities = new Cities(app.Conn).getNPopulatedCitiesInCountryByDescPopulation(10, "Hungary");
         assertTrue(cities.size() > 0);
     }
 }

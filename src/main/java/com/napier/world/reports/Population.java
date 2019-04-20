@@ -1,20 +1,24 @@
 package com.napier.world.reports;
 
-import com.mysql.cj.protocol.Resultset;
 import com.napier.world.connection.Connection;
-import com.napier.world.models.Country;
 
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 
+
+/**
+ * Contains reports for population type information requirements
+ */
 public class Population {
     Connection Conn;
 
+    /**
+     * Initializes class with a connection to the database passed as argument
+     * @param conn Connection to database to run queries against
+     */
     public Population(Connection conn)
     {
         Conn = conn;
@@ -114,6 +118,11 @@ public class Population {
         }
     }
 
+    /**
+     * Serializes dynamic result set returned from SQL to Population model objects
+     * @param rSet Result set returned from the database
+     * @return List of Population model objects
+     */
     public static List<com.napier.world.models.Population> processResults(ResultSet rSet)
     {
         if (rSet == null)
