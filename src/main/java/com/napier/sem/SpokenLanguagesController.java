@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
+/**
+ * Class responsible for loading data for reports of spoken languages type
+ * and passing the loaded data to the view
+ */
 @Controller
 @RequestMapping("/info")
 public class SpokenLanguagesController {
