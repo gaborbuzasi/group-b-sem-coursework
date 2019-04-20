@@ -73,7 +73,7 @@ jobs:
       # Push the application image.
       - docker push gcr.io/${PROJECT_ID}/app
       # Create a container cluster.  We only need one node.
-      # - gcloud container clusters create report-cluster --num-nodes=1
+      - gcloud container clusters create report-cluster --num-nodes=1
       # Tell kubernetes to run the built database image, opening port 3306
       - kubectl run db --image=gcr.io/${PROJECT_ID}/db --port 3306
       # Expose database service to the rest of the cluster with name db.
