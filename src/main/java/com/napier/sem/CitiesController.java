@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
+/**
+ * Class responsible for loading data for reports of cities type
+ * and passing the loaded data to the view
+ */
 @Controller
 @RequestMapping("/cities")
 public class CitiesController {
