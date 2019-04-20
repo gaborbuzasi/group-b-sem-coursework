@@ -2,6 +2,9 @@ package com.napier.world.reports;
 
 import org.junit.jupiter.api.Test;
 
+/**
+ * Class containing all unit tests for methods that were possible to test with unit testing
+ */
 public class ReportTests
 {
     @Test

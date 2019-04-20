@@ -23,6 +23,9 @@ import java.util.List;
 @Configuration
 @ComponentScan
 
+/**
+ * Starting point of the application, initialises spring framework and connects to the database
+ */
 public class App
 {
     public static Connection Conn;

@@ -11,9 +11,16 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Contains reports for countries type information requirements
+ */
 public class Countries {
     Connection Conn;
 
+    /**
+     * Initializes class with a connection to the database passed as argument
+     * @param conn Connection to database to run queries against
+     */
     public Countries(Connection conn) {
         Conn = conn;
     }
@@ -163,6 +170,11 @@ public class Countries {
         }
     }
 
+    /**
+     * Serializes dynamic result set returned from SQL to Country objects
+     * @param rSet Result set returned from the database
+     * @return List of Country objects
+     */
     public static List<Country> processResults(ResultSet rSet) {
         if (rSet == null) {
             System.out.println("No records to process");

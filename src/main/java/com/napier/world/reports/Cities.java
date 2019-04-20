@@ -1,10 +1,8 @@
 package com.napier.world.reports;
 
 import com.napier.world.connection.Connection;
-import com.napier.world.connection.ConnectionBuilder;
 import com.napier.world.models.City;
 import com.napier.world.models.CapitalCity;
-import com.napier.world.models.Country;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,9 +11,16 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Contains reports for cities type information requirements
+ */
 public class Cities {
     Connection Conn;
 
+    /**
+     * Initializes class with a connection to the database passed as argument
+     * @param conn Connection to database to run queries against
+     */
     public Cities(Connection conn) {
         Conn = conn;
     }
@@ -443,6 +448,11 @@ public class Cities {
         }
     }
 
+    /**
+     * Serializes dynamic result set returned from SQL to Capital City objects
+     * @param rSet Result set returned from the database
+     * @return List of CapitalCity objects
+     */
     public static List<CapitalCity> processCapitalCitiesResult(ResultSet rSet)
     {
         if (rSet == null)
@@ -478,6 +488,11 @@ public class Cities {
         }
     }
 
+    /**
+     * Serializes dynamic result set returned from SQL to City objects
+     * @param rSet Result set returned from the database
+     * @return List of City objects
+     */
     public static List<City> processResults(ResultSet rSet)
     {
         if (rSet == null)
