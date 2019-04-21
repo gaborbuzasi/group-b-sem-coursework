@@ -1,36 +1,36 @@
 package com.napier.world.reports;
 
 import com.napier.world.connection.Connection;
-import com.napier.world.models.Population;
 import com.napier.world.models.PopulationInfo;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 
-import static com.napier.world.reports.Population.processResults;
-
-/*
-Contains reports for populationInfo type requirements
+/**
+ * Contains reports for Population type information requirements
  */
 public class PopulationInfos
 {
     Connection Conn;
+    /**
+     * Initializes class with a connection to the database passed as argument
+     * @param conn Connection to database to run queries against
+     */
     public PopulationInfos(Connection conn)
     {
         Conn = conn;
     }
 
+    /**
+     * Calculates the population of the world
+     * @return
+     */
     public PopulationInfo getPopulationOfWorld()
     {
         try
         {
-            /*
-            Calculates the population of the world
-            */
             String strSelect = "SELECT SUM(c.Population) AS Population " +
                                "FROM country c";
 
@@ -48,13 +48,15 @@ public class PopulationInfos
         }
     }
 
+    /**
+     * Calculates the population of a region where the region is entered by the user
+     * @param region
+     * @return
+     */
     public PopulationInfo getPopulationOfARegion(String region)
     {
         try
         {
-            /*
-            Calculates the population of a region where the region is entered by the user
-            */
             String strSelect = "SELECT SUM(c.Population) AS Population " +
                                "FROM country c " +
                                "WHERE c.Region = ?";
@@ -74,13 +76,15 @@ public class PopulationInfos
         }
     }
 
+    /**
+     * Retrieves the population of a country where the country is entered by the user
+     * @param country
+     * @return
+     */
     public PopulationInfo getPopulationOfACountry(String country)
     {
         try
         {
-            /*
-            Retrieves the population of a country where the country is entered by the user
-            */
             String strSelect = "SELECT SUM(c.Population) AS Population " +
                     "FROM country c " +
                     "WHERE c.Name = ?";
@@ -100,13 +104,15 @@ public class PopulationInfos
         }
     }
 
+    /**
+     * Retrieves the population of a district where the district is entered by the user
+     * @param district
+     * @return
+     */
     public PopulationInfo getPopulationOfADistrict(String district)
     {
         try
         {
-            /*
-            Retrieves the population of a district where the district is entered by the user
-            */
             String strSelect = "SELECT SUM(c.Population) AS Population " +
                     "FROM city c " +
                     "WHERE c.District = ?";
@@ -126,13 +132,15 @@ public class PopulationInfos
         }
     }
 
+    /**
+     * Retrieves the population of a city where the city is entered by the user
+     * @param city
+     * @return
+     */
     public PopulationInfo getPopulationOfACity(String city)
     {
         try
         {
-            /*
-            Retrieves the population of a city where the city is entered by the user
-            */
             String strSelect = "SELECT SUM(c.Population) AS Population " +
                     "FROM city c " +
                     "WHERE c.Name = ?";
@@ -152,13 +160,15 @@ public class PopulationInfos
         }
     }
 
+    /**
+     * Calculates the population of a continent where the continent is entered by the user
+     * @param continent
+     * @return
+     */
     public PopulationInfo getPopulationOfAContinent(String continent)
     {
         try
         {
-            /*
-            Calculates the population of a continent where the continent is entered by the user
-            */
             String strSelect = "SELECT SUM(c.Population) AS Population " +
                     "FROM country c " +
                     "WHERE c.Continent = ?";
@@ -177,9 +187,11 @@ public class PopulationInfos
             return null;
         }
     }
-    
-    /*
-     Serialises the SQL result into capital cities object
+
+    /**
+     * Serializes dynamic result set returned from SQL to PopulationInfo object
+     * @param rSet Result set returned from the database
+     * @return PopulationInfo object
      */
     public static PopulationInfo processResults(ResultSet rSet)
     {

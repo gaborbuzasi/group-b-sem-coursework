@@ -10,24 +10,27 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-/*
-Contains reports for spokenLanguage type requirements
-*/
-
+/**
+ * Contains reports for spoken languages type information requirements
+ */
 public class SpokenLanguagesReport
 {
     Connection Conn;
-
+    /**
+     * Initializes class with a connection to the database passed as argument
+     * @param conn Connection to database to run queries against
+     */
     public SpokenLanguagesReport(Connection conn)
     {
         Conn = conn;
     }
 
-    public List<SpokenLanguages> getCountriesByDescPopulation()
+    /**
+     * Retrieves languages spoken report from database
+     * @return
+     */
+    public List<SpokenLanguages> getLanguagesSpoken()
     {
-        /*
-        
-        */
         try
         {
             // Initializes a connection to the database
@@ -44,6 +47,7 @@ public class SpokenLanguagesReport
 
             ResultSet rSet = stmt.executeQuery(strSelect);
 
+            // Serializing dynamic result set returned from the database to SpokenLanguages object type
             while (rSet.next())
             {
                 String language = rSet.getString("Language");

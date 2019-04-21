@@ -23,10 +23,9 @@ import java.util.List;
 @Configuration
 @ComponentScan
 
-/*
-*Starting point of the application, initialises spring framework and connects to the database
+/**
+ * Starting point of the application, initialises spring framework and connects to the database
  */
-
 public class App
 {
     public static Connection Conn;
@@ -51,5 +50,4 @@ public class App
     {
         Conn = new ConnectionBuilder().location(name).buildConnection();
     }
-
 }

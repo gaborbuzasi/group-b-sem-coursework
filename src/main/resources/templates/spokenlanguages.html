@@ -15,23 +15,17 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>Code</th>
-                    <th>Name</th>
-                    <th>Continent</th>
-                    <th>Region</th>
-                    <th>Population</th>
-                    <th>Capital</th>
+                    <th>Language</th>
+                    <th>Number of people</th>
+                    <th>Percentage of population</th>
                 </tr>
             </thead>
             <tbody>
-            <tr th:each="country : ${countries}">
-                <td th:text="${country.Code}"></td>
-                <td th:text="${country.Name}"></td>
-                <td th:text="${country.Continent}"></td>
-                <td th:text="${country.Region}"></td>
-                <td th:text="${country.Population}"></td>
-                <td th:text="${country.Capital}"></td>
-            </tr>
+                <tr th:each="lang : ${languages}">
+                    <td th:text="${lang.Language}"></td>
+                    <td th:text="${lang.Population}"></td>
+                    <td th:text="${lang.Percentage} + '%'"></td>
+                </tr>
             </tbody>
         </table>
     </div>

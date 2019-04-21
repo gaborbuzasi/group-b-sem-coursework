@@ -11,22 +11,25 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-/*
-Contains reports for countries type requirements
+/**
+ * Contains reports for countries type information requirements
  */
-
 public class Countries {
     Connection Conn;
 
+    /**
+     * Initializes class with a connection to the database passed as argument
+     * @param conn Connection to database to run queries against
+     */
     public Countries(Connection conn) {
         Conn = conn;
     }
 
-    public List<Country> getCountriesByDescPopulation()
-    {
-        /*
-        Retrieves all countries in order from most to least populous
-         */
+    /**
+     * Retrieves all countries in order from most to least populous
+     * @return
+     */
+    public List<Country> getAllCountriesInWorldByDescPopulation() {
         try {
             // Initializes a connection to the database
             Statement stmt = Conn.conn.createStatement();
@@ -48,65 +51,45 @@ public class Countries {
         }
     }
 
-    public List<Country> getNPopulatedCountries(int numberOfRows)
-    {   
-        /*
-        Retrieves N most populous countries where N is a number entered by the user
-         */
-        try {
-            // Initializes a connection to the database
+    /**
+     * Retrieves all countries within a continent in order from most to least populous
+     * where the continent is entered by the user
+     * @param continent
+     * @return
+     */
+    public List<Country> getAllCountriesInContinentByDescPopulation(String continent)
+    {
+        try
+        {
             String strSelect = "SELECT c.Code, c.Name, c.Continent, c.Region, c.Population, ci.Name AS Capital " +
                     "FROM country c " +
                     "LEFT JOIN city ci on c.Capital = ci.ID " +
-                    "WHERE c.Population > 0 " +
-                    "ORDER BY c.Population DESC " +
-                    "LIMIT ?";
+                    "WHERE c.Continent = ? " +
+                    "ORDER BY c.Population DESC ";
 
             PreparedStatement stmt = Conn.conn.prepareStatement(strSelect);
-            stmt.setInt(1, numberOfRows);
+            stmt.setString(1, continent);
 
             ResultSet rSet = stmt.executeQuery();
 
             return processResults(rSet);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+        }
+        catch (Exception ex)
+        {
+            System.out.println(ex.getMessage());
             System.out.println("Failed to get country details");
             return null;
         }
     }
 
-    public List<Country> NPopulatedCountriesWithinRegion(int numberOfRows, String region)
+    /**
+     * Retrieves all countries within a region in order from most to least populous
+     * where the continent is entered by the user
+     * @param region
+     * @return
+     */
+    public List<Country> getAllCountriesInRegionByDescPopulation(String region)
     {
-        /*
-        Retrieves N most populous countries within a region where N is a number entered by the user and the region is entered by the user
-         */
-        try {
-            String strSelect = "SELECT c.Name, c.Population, c.Region, c.Code, c.Continent, ci.Name AS Capital " +
-                    "FROM country c " +
-                    "LEFT JOIN city ci on c.Capital = ci.ID " +
-                    "WHERE c.Region = ? " +
-                    "ORDER BY c.Population DESC " +
-                    "LIMIT ?";
-
-            PreparedStatement stmt = Conn.conn.prepareStatement(strSelect);
-            stmt.setInt(2, numberOfRows);
-            stmt.setString(1, region);
-
-            ResultSet rSet = stmt.executeQuery();
-
-            return processResults(rSet);
-
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get country details");
-            return null;
-        }
-    }
-    public List<Country> getCountriesInRegion(String region)
-    {
-        /*
-        Retrieves countries within a region in order from most to least populous where the region is entered by the user
-         */
         try
         {
             String strSelect = "SELECT c.Code, c.Name, c.Continent, c.Region, c.Population, ci.Name AS Capital " +
@@ -130,37 +113,103 @@ public class Countries {
         }
     }
 
-    public List<Country> getAllCountriesInContinentByDescPopulation(String continent)
-    {
-        /*
-        Retrieves all countries within a continent in order from most to least populous where the continent is entered by the user
-         */
-        try
-        {
+    /**
+     * Retrieves N most populous countries where N is a number entered by the user
+     * @param numberOfRows
+     * @return
+     */
+    public List<Country> getNPopulatedCountriesInWorldByDescPopulation(int numberOfRows) {
+        try {
+            // Initializes a connection to the database
             String strSelect = "SELECT c.Code, c.Name, c.Continent, c.Region, c.Population, ci.Name AS Capital " +
                     "FROM country c " +
                     "LEFT JOIN city ci on c.Capital = ci.ID " +
-                    "WHERE c.Continent = ? " +
-                    "ORDER BY c.Population DESC ";
+                    "WHERE c.Population > 0 " +
+                    "ORDER BY c.Population DESC " +
+                    "LIMIT ?";
 
             PreparedStatement stmt = Conn.conn.prepareStatement(strSelect);
-            stmt.setString(1, continent);
+            stmt.setInt(1, numberOfRows);
 
             ResultSet rSet = stmt.executeQuery();
 
             return processResults(rSet);
-        }
-        catch (Exception ex)
-        {
-            System.out.println(ex.getMessage());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
             System.out.println("Failed to get country details");
             return null;
         }
     }
-    
-       /*
-        Serialises the SQL result into countries object
-         */
+
+    /**
+     * Retrieves N most populous countries in a continent where N is a number entered by the user
+     * and continent is entered by the user
+     * @param numberOfRows
+     * @param continent
+     * @return
+     */
+    public List<Country> getNPopulatedCountriesInContinentByDescPopulation(int numberOfRows, String continent) {
+        try {
+            String strSelect = "SELECT c.Name, c.Population, c.Region, c.Code, c.Continent, ci.Name AS Capital " +
+                    "FROM country c " +
+                    "LEFT JOIN city ci on c.Capital = ci.ID " +
+                    "WHERE c.Continent = ? " +
+                    "ORDER BY c.Population DESC " +
+                    "LIMIT ?";
+
+            PreparedStatement stmt = Conn.conn.prepareStatement(strSelect);
+
+            stmt.setString(1, continent);
+            stmt.setInt(2, numberOfRows);
+
+            ResultSet rSet = stmt.executeQuery();
+
+            return processResults(rSet);
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get country details");
+            return null;
+        }
+    }
+
+    /**
+     * Retrieves N most populous countries in a region where N is a number entered by the user
+     * and region is entered by the user
+     * @param numberOfRows
+     * @param region
+     * @return
+     */
+    public List<Country> getNPopulatedCountriesInRegionByDescPopulation(int numberOfRows, String region) {
+        try {
+            String strSelect = "SELECT c.Name, c.Population, c.Region, c.Code, c.Continent, ci.Name AS Capital " +
+                    "FROM country c " +
+                    "LEFT JOIN city ci on c.Capital = ci.ID " +
+                    "WHERE c.Region = ? " +
+                    "ORDER BY c.Population DESC " +
+                    "LIMIT ?";
+
+            PreparedStatement stmt = Conn.conn.prepareStatement(strSelect);
+
+            stmt.setString(1, region);
+            stmt.setInt(2, numberOfRows);
+
+            ResultSet rSet = stmt.executeQuery();
+
+            return processResults(rSet);
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get country details");
+            return null;
+        }
+    }
+
+    /**
+     * Serializes dynamic result set returned from SQL to Country objects
+     * @param rSet Result set returned from the database
+     * @return List of Country objects
+     */
     public static List<Country> processResults(ResultSet rSet) {
         if (rSet == null) {
             System.out.println("No records to process");
