@@ -25,6 +25,11 @@ public class Cities {
         Conn = conn;
     }
 
+    /**
+     * Retrieves all of the cities in the world in order
+     * from most to least population
+     * @return
+     */
     public List<City> getAllCitiesInWorldByDescPopulation() {
         try
         {
@@ -48,6 +53,12 @@ public class Cities {
         }
     }
 
+    /**
+     * Retrieves all of the cities in a continent in order
+     * from most to least population
+     * @param continent Continent for population
+     * @return
+     */
     public List<City> getAllCitiesInContinentByDescPopulation(String continent) {
         try
         {
@@ -71,6 +82,12 @@ public class Cities {
         }
     }
 
+    /**
+     * Retrieves all of the cities in a region in order
+     * from most to least population
+     * @param region
+     * @return
+     */
     public List<City> getAllCitiesInRegionByDescPopulation(String region) {
         try
         {
@@ -94,6 +111,12 @@ public class Cities {
         }
     }
 
+    /**
+     * Retrieves all of the cities in a country in order
+     * from most to least population
+     * @param country
+     * @return
+     */
     public List<City> getAllCitiesInCountryByDescPopulation(String country) {
         try
         {
@@ -117,6 +140,12 @@ public class Cities {
         }
     }
 
+    /**
+     * Retrieves all of the cities in a district in order
+     * from most to least population
+     * @param district
+     * @return
+     */
     public List<City> getAllCitiesInDistrictByDescPopulation(String district) {
         try
         {
@@ -142,6 +171,12 @@ public class Cities {
         }
     }
 
+    /**
+     * Retrieves N cities in the world in order
+     * from most to least populous where N is a number entered by the user
+     * @param numberOfRows
+     * @return
+     */
     public List<City> getNPopulatedCitiesInWorldByDescPopulation(int numberOfRows) {
         try
         {
@@ -168,6 +203,14 @@ public class Cities {
         }
     }
 
+    /**
+     * Retrieves N cities in a continent in order
+     * from most to least populous where N is a number entered by the user
+     * and the continent is entered by the user
+     * @param numberOfRows
+     * @param continent
+     * @return
+     */
     public List<City> getNPopulatedCitiesInContinentByDescPopulation(int numberOfRows, String continent) {
         try
         {
@@ -195,6 +238,14 @@ public class Cities {
         }
     }
 
+    /**
+     * Retrieves N cities in a region in order
+     * from most to least populous where N is a number entered by the user
+     * and the continent is entered by the user
+     * @param numberOfRows
+     * @param region
+     * @return
+     */
     public List<City> getNPopulatedCitiesWithinRegionByDescPopulation(int numberOfRows, String region) {
         try {
             String strSelect = "SELECT ci.Name, ci.Population, ci.District, c.Code AS Country " +
@@ -219,6 +270,14 @@ public class Cities {
         }
     }
 
+    /**
+     * Retrieves N cities in a country in order
+     * from most to least populous where N is a number entered by the user
+     * and the continent is entered by the user
+     * @param numberOfRows
+     * @param country
+     * @return
+     */
     public List<City> getNPopulatedCitiesInCountryByDescPopulation(int numberOfRows, String country) {
         try
         {
@@ -246,6 +305,14 @@ public class Cities {
         }
     }
 
+    /**
+     * Retrieves N cities in a district in order
+     * from most to least populous where N is a number entered by the user
+     * and the continent is entered by the user
+     * @param numberOfRows
+     * @param district
+     * @return
+     */
     public List<City> getNPopulatedCitiesInDistrictByDescPopulation(int numberOfRows, String district) {
         try
         {
@@ -274,6 +341,12 @@ public class Cities {
         }
     }
 
+    /**
+     * Retrieves all or N capital cities in the world
+     * where N is a number entered by the user
+     * @param numberOfRows
+     * @return
+     */
     public List<CapitalCity> getAllOrNCapitalCitiesInWorldByDescPopulation(Integer numberOfRows)
     {
         try
@@ -306,6 +379,12 @@ public class Cities {
         }
     }
 
+    /**
+     * Retrieves all capital cities in a continent
+     * where N is a number entered by the user
+     * @param continent
+     * @return
+     */
     public List<CapitalCity> getAllCapitalCitiesInContinentByDescPopulation(String continent)
     {
         try
@@ -333,6 +412,12 @@ public class Cities {
         }
     }
 
+    /**
+     * Retrieves all capital cities in a region
+     * where N is a number entered by the user
+     * @param region
+     * @return
+     */
     public List<CapitalCity> getAllCapitalCitiesInRegionByDescPopulation(String region)
     {
         try
@@ -360,6 +445,12 @@ public class Cities {
         }
     }
 
+    /**
+     * Retrieves N capital cities in the world in order from most to least populous
+     * where N is a number entered by the user
+     * @param numberOfRows
+     * @return
+     */
     public List<CapitalCity> getNPopulatedCapitalCitiesInWorldByDescPopulation(Integer numberOfRows)
     {
         try
@@ -388,6 +479,13 @@ public class Cities {
         }
     }
 
+    /**
+     * Retrieves N most populous capital cities in a continent where N is a
+     * number entered by the user and the continent is entered by the user
+     * @param numberOfRows
+     * @param continent
+     * @return
+     */
     public List<CapitalCity> getNPopulatedCapitalCitiesInContinentByDescPopulation(Integer numberOfRows, String continent)
     {
         try
@@ -418,6 +516,13 @@ public class Cities {
         }
     }
 
+    /**
+     * Retrieves N most populous capital cities in a region where N is a
+     * number entered by the user and the continent is entered by the user
+     * @param numberOfRows
+     * @param region
+     * @return
+     */
     public List<CapitalCity> getNPopulatedCapitalCitiesInRegionByDescPopulation(Integer numberOfRows, String region)
     {
         try

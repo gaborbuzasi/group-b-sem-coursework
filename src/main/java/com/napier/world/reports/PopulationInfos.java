@@ -23,6 +23,10 @@ public class PopulationInfos
         Conn = conn;
     }
 
+    /**
+     * Calculates the population of the world
+     * @return
+     */
     public PopulationInfo getPopulationOfWorld()
     {
         try
@@ -44,6 +48,11 @@ public class PopulationInfos
         }
     }
 
+    /**
+     * Calculates the population of a region where the region is entered by the user
+     * @param region
+     * @return
+     */
     public PopulationInfo getPopulationOfARegion(String region)
     {
         try
@@ -67,6 +76,11 @@ public class PopulationInfos
         }
     }
 
+    /**
+     * Retrieves the population of a country where the country is entered by the user
+     * @param country
+     * @return
+     */
     public PopulationInfo getPopulationOfACountry(String country)
     {
         try
@@ -90,6 +104,11 @@ public class PopulationInfos
         }
     }
 
+    /**
+     * Retrieves the population of a district where the district is entered by the user
+     * @param district
+     * @return
+     */
     public PopulationInfo getPopulationOfADistrict(String district)
     {
         try
@@ -113,6 +132,11 @@ public class PopulationInfos
         }
     }
 
+    /**
+     * Retrieves the population of a city where the city is entered by the user
+     * @param city
+     * @return
+     */
     public PopulationInfo getPopulationOfACity(String city)
     {
         try
@@ -136,6 +160,11 @@ public class PopulationInfos
         }
     }
 
+    /**
+     * Calculates the population of a continent where the continent is entered by the user
+     * @param continent
+     * @return
+     */
     public PopulationInfo getPopulationOfAContinent(String continent)
     {
         try

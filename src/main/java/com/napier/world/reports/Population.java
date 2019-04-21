@@ -24,6 +24,10 @@ public class Population {
         Conn = conn;
     }
 
+    /**
+     * Retrieves the population for each region in the world
+     * @return
+     */
     public List<com.napier.world.models.Population> getPopulationByRegion()
     {
         try
@@ -57,6 +61,10 @@ public class Population {
         }
     }
 
+    /**
+     * Retrieves the population for each country in the world
+     * @return
+     */
     public List<com.napier.world.models.Population> getPopulationByCountries()
     {
         try
@@ -83,7 +91,10 @@ public class Population {
         }
     }
 
-
+    /**
+     * Retrieves the population for each continent in the world
+     * @return
+     */
     public List<com.napier.world.models.Population> getPopulationByContinent()
     {
         try

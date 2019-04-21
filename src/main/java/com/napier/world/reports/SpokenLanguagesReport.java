@@ -25,6 +25,10 @@ public class SpokenLanguagesReport
         Conn = conn;
     }
 
+    /**
+     * Retrieves languages spoken report from database
+     * @return
+     */
     public List<SpokenLanguages> getLanguagesSpoken()
     {
         try

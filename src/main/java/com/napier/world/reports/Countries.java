@@ -25,6 +25,10 @@ public class Countries {
         Conn = conn;
     }
 
+    /**
+     * Retrieves all countries in order from most to least populous
+     * @return
+     */
     public List<Country> getAllCountriesInWorldByDescPopulation() {
         try {
             // Initializes a connection to the database
@@ -47,6 +51,12 @@ public class Countries {
         }
     }
 
+    /**
+     * Retrieves all countries within a continent in order from most to least populous
+     * where the continent is entered by the user
+     * @param continent
+     * @return
+     */
     public List<Country> getAllCountriesInContinentByDescPopulation(String continent)
     {
         try
@@ -72,6 +82,12 @@ public class Countries {
         }
     }
 
+    /**
+     * Retrieves all countries within a region in order from most to least populous
+     * where the continent is entered by the user
+     * @param region
+     * @return
+     */
     public List<Country> getAllCountriesInRegionByDescPopulation(String region)
     {
         try
@@ -97,6 +113,11 @@ public class Countries {
         }
     }
 
+    /**
+     * Retrieves N most populous countries where N is a number entered by the user
+     * @param numberOfRows
+     * @return
+     */
     public List<Country> getNPopulatedCountriesInWorldByDescPopulation(int numberOfRows) {
         try {
             // Initializes a connection to the database
@@ -120,6 +141,13 @@ public class Countries {
         }
     }
 
+    /**
+     * Retrieves N most populous countries in a continent where N is a number entered by the user
+     * and continent is entered by the user
+     * @param numberOfRows
+     * @param continent
+     * @return
+     */
     public List<Country> getNPopulatedCountriesInContinentByDescPopulation(int numberOfRows, String continent) {
         try {
             String strSelect = "SELECT c.Name, c.Population, c.Region, c.Code, c.Continent, ci.Name AS Capital " +
@@ -145,6 +173,13 @@ public class Countries {
         }
     }
 
+    /**
+     * Retrieves N most populous countries in a region where N is a number entered by the user
+     * and region is entered by the user
+     * @param numberOfRows
+     * @param region
+     * @return
+     */
     public List<Country> getNPopulatedCountriesInRegionByDescPopulation(int numberOfRows, String region) {
         try {
             String strSelect = "SELECT c.Name, c.Population, c.Region, c.Code, c.Continent, ci.Name AS Capital " +
