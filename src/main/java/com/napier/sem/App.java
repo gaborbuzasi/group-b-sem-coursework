@@ -36,7 +36,7 @@ public class App
 
         if (args.length < 1)
         {
-            connectToDatabase("localhost:3306");
+            connectToDatabase("localhost:33060");
         }
         else
         {
