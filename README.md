@@ -9,10 +9,11 @@ Group B - Software Engineering Methods module coursework
 | ID | Name                                                                                                 | Met  | Met  |
 |----|------------------------------------------------------------------------------------------------------|------|------|
 | 1  | All the cities in the world organised by largest population to smallest                              | yes  |   ![image](https://user-images.githubusercontent.com/46718405/56734867-e7ca7200-675b-11e9-92a4-73c02a2af56f.png)   |
-| 2  | All the cities in a continent organised by largest population to smallest                            | yes  |      |
-| 3  | All the cities in a region organised by largest population to smallest                               | yes  |      |
-| 4  | All the cities in a country organised by largest population to smallest                              | yes  |      |
-| 5  | All the cities in a district organised by largest population to smallest                             | yes  |      |
+| 2  | All the cities in a continent organised by largest population to smallest                            | yes  |     ![image](https://user-images.githubusercontent.com/46718405/56734941-16e0e380-675c-11e9-8f50-f6df96e09f22.png) |
+| 3  | All the cities in a region organised by largest population to smallest                               | yes  |   ![image](https://user-images.githubusercontent.com/46718405/56735029-4db6f980-675c-11e9-8eaa-d0200ff4f064.png)   |
+| 4  | All the cities in a country organised by largest population to smallest                              | yes  |   ![image](https://user-images.githubusercontent.com/46718405/56735063-5f000600-675c-11e9-87b0-3c2b2d39b86a.png)
+   |
+| 5  | All the cities in a district organised by largest population to smallest                             | yes  |  ![image](https://user-images.githubusercontent.com/46718405/56735094-6b845e80-675c-11e9-8ca7-bb15c6edbad2.png)    |
 | 6  | The top N populated cities in the world where N is provided by the user                              | yes  |      |
 | 7  | The top N populated cities in a continent where N is provided by the user                            | yes  |      |
 | 8  | The top N populated cities in a region where N is provided by the user                               | yes  |      |
