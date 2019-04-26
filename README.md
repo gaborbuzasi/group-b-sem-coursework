@@ -14,11 +14,12 @@ Group B - Software Engineering Methods module coursework
 | 4  | All the cities in a country organised by largest population to smallest                              | yes  |   ![image](https://user-images.githubusercontent.com/46718405/56735063-5f000600-675c-11e9-87b0-3c2b2d39b86a.png) |
 | 5  | All the cities in a district organised by largest population to smallest                             | yes  | ![image](https://user-images.githubusercontent.com/46718405/56735094-6b845e80-675c-11e9-8ca7-bb15c6edbad2.png)     |
 | 6  | The top N populated cities in the world where N is provided by the user                              | yes  |   ![image](https://user-images.githubusercontent.com/46718405/56735175-ad150980-675c-11e9-93a4-df1b25df029e.png)   |
-| 7  | The top N populated cities in a continent where N is provided by the user                            | yes  |      |
-| 8  | The top N populated cities in a region where N is provided by the user                               | yes  |      |
-| 9  | The top N populated cities in a country where N is provided by the user                              | yes  |      |
-| 10 | The top N populated cities in a district where N is provided by the user                             | yes  |      |
-| 11 | All the capital cities in the world organised by largest population to smallest                      | yes  |      |
+| 7  | The top N populated cities in a continent where N is provided by the user                            | yes  |  ![image](https://user-images.githubusercontent.com/46718405/56794176-84951a00-6805-11e9-8347-58682e5f3b42.png)    |
+| 8  | The top N populated cities in a region where N is provided by the user                               | yes  |    ![image](https://user-images.githubusercontent.com/46718405/56794209-91b20900-6805-11e9-948c-ae9848792201.png)  |
+| 9  | The top N populated cities in a country where N is provided by the user                              | yes  |    ![image](https://user-images.githubusercontent.com/46718405/56794241-9d053480-6805-11e9-8b32-4fa625a0da27.png)  |
+| 10 | The top N populated cities in a district where N is provided by the user                             | yes  |   ![image](https://user-images.githubusercontent.com/46718405/56794263-ac847d80-6805-11e9-82ea-f93d0899ce48.png)   |
+| 11 | All the capital cities in the world organised by largest population to smallest                      | yes  |  ![image](https://user-images.githubusercontent.com/46718405/56794283-b60de580-6805-11e9-9be2-06cc04b331a7.png)
+    |
 | 12 | All the capital cities in a continent organised by largest population to smallest                    | yes  |      |
 | 13 | All the capital cities in a region organised by largest to smallest                                  | yes  |      |
 | 14 | The top N populated capital cities in the world where N is provided by the user                      | yes  |      |
