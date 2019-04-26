@@ -18,8 +18,7 @@ Group B - Software Engineering Methods module coursework
 | 8  | The top N populated cities in a region where N is provided by the user                               | yes  |    ![image](https://user-images.githubusercontent.com/46718405/56794209-91b20900-6805-11e9-948c-ae9848792201.png)  |
 | 9  | The top N populated cities in a country where N is provided by the user                              | yes  |    ![image](https://user-images.githubusercontent.com/46718405/56794241-9d053480-6805-11e9-8b32-4fa625a0da27.png)  |
 | 10 | The top N populated cities in a district where N is provided by the user                             | yes  |   ![image](https://user-images.githubusercontent.com/46718405/56794263-ac847d80-6805-11e9-82ea-f93d0899ce48.png)   |
-| 11 | All the capital cities in the world organised by largest population to smallest                      | yes  |  ![image](https://user-images.githubusercontent.com/46718405/56794283-b60de580-6805-11e9-9be2-06cc04b331a7.png)
-    |
+| 11 | All the capital cities in the world organised by largest population to smallest                      | yes  |  ![image](https://user-images.githubusercontent.com/46718405/56794283-b60de580-6805-11e9-9be2-06cc04b331a7.png) |
 | 12 | All the capital cities in a continent organised by largest population to smallest                    | yes  |      |
 | 13 | All the capital cities in a region organised by largest to smallest                                  | yes  |      |
 | 14 | The top N populated capital cities in the world where N is provided by the user                      | yes  |      |
